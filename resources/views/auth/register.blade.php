@@ -14,22 +14,6 @@
             ],
         ]);
     @endphp
-    <div class="lang-dropdown-only-desk">
-        <li class="dropdown dash-h-item drp-language">
-            <a class="dash-head-link dropdown-toggle btn" href="#" data-bs-toggle="dropdown" aria-expanded="false">
-                <span class="drp-text"> {{ ucFirst($languages[$lang]) }}
-                </span>
-            </a>
-            <div class="dropdown-menu dash-h-dropdown dropdown-menu-end">
-                @foreach ($languages as $code => $language)
-                    <a href="{{ route('register', $code) }}" tabindex="0"
-                        class="dropdown-item {{ $code == $lang ? 'active' : '' }}">
-                        <span>{{ ucFirst($language) }}</span>
-                    </a>
-                @endforeach
-            </div>
-        </li>
-    </div>
 @endsection
 @section('content')
     <div class="card-body">

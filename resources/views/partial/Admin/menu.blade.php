@@ -157,13 +157,13 @@
                     <li class="dash-item {{ Request::segment(1) == 'employee' ? 'active' : '' }}">
                         <a href="{{ route('employee.show', \Illuminate\Support\Facades\Crypt::encrypt($employee->id)) }}"
                             class="dash-link"><span class="dash-micon"><i class="ti ti-user"></i></span><span
-                                class="dash-mtext">{{ __('Employee') }}</span></a>
+                                class="dash-mtext">{{ __('Employees') }}</span></a>
                     </li>
                 @else
                     <li class="dash-item {{ Request::segment(1) == 'employee' ? 'active' : '' }}">
                         <a href="{{ route('employee.index') }}" class="dash-link"><span class="dash-micon"><i
                                     class="ti ti-user"></i></span><span
-                                class="dash-mtext">{{ __('Employee') }}</span></a>
+                                class="dash-mtext">{{ __('Manage Employees') }}</span></a>
                     </li>
                 @endif
             @endif
@@ -179,7 +179,7 @@
                             </i>
                         </span>
                         <span class="dash-mtext">
-                            {{ __('Payroll') }}
+                            {{ __('Manage Salary') }}
                         </span>
                         <span class="dash-arrow"><i data-feather="chevron-right">
                             </i>
@@ -187,7 +187,10 @@
                     </a>
                     <ul class="dash-submenu ">
                         <li class="dash-item {{ Request::segment(1) == 'setsalary' ? 'active' : '-' }}">
-                            <a class="dash-link" href="{{ route('setsalary.index') }}">{{ __('Set Salary') }}</a>
+                            <a class="dash-link" href="{{ route('setsalary.index') }}">{{ __('Salary Breakup') }}</a>
+                        </li>
+                        <li class="dash-item {{ Request::segment(1) == 'setsalary' ? 'active' : '-' }}">
+                            <a class="dash-link" href="{{ route('setsalary.index') }}">{{ __('Salary Computation') }}</a>
                         </li>
                         <li class="dash-item">
                             <a class="dash-link" href="{{ route('payslip.index') }}">{{ __('Payslip') }}</a>
@@ -198,22 +201,13 @@
             @endif
             <!-- payroll-->
 
-            @if (\Auth::user()->type == 'employee')
+            @if (Gate::check('Manage Employee'))
                 <li
                     class="dash-item dash-hasmenu {{ Request::segment(1) == 'setsalary' ? 'dash-trigger active' : '' }}">
                     <a href="#!" class="dash-link"><span class="dash-micon"><i
                                 class="ti ti-receipt"></i></span><span
                             class="dash-mtext">{{ __('Payroll') }}</span><span class="dash-arrow"><i
                                 data-feather="chevron-right"></i></span></a>
-                    <ul class="dash-submenu">
-                        <li class="dash-item {{ Request::segment(1) == 'setsalary' ? 'active' : '-' }}">
-                            <a class="dash-link"
-                                href="{{ route('setsalary.show', \Illuminate\Support\Facades\Crypt::encrypt(\Auth::user()->id)) }}">{{ __('Salary') }}</a>
-                        </li>
-                        <li class="dash-item">
-                            <a class="dash-link" href="{{ route('payslip.index') }}">{{ __('Payslip') }}</a>
-                        </li>
-                    </ul>
                 </li>
             @endif
 
@@ -223,10 +217,10 @@
                     class="dash-item dash-hasmenu {{ Request::segment(1) == 'calender' && Request::segment(2) == 'leave' ? 'dash-trigger active' : '' }}">
                     <a href="#!" class="dash-link"><span class="dash-micon"><i
                                 class="ti ti-clock"></i></span><span
-                            class="dash-mtext">{{ __('Timesheet') }}</span><span class="dash-arrow"><i
+                            class="dash-mtext">{{ __('Manage Attendance') }}</span><span class="dash-arrow"><i
                                 data-feather="chevron-right"></i></span></a>
                     <ul class="dash-submenu">
-                        @can('Manage TimeSheet')
+                        <!-- @can('Manage TimeSheet')
                             <li class="dash-item">
                                 <a class="dash-link" href="{{ route('timesheet.index') }}">{{ __('Timesheet') }}</a>
                             </li>
@@ -237,7 +231,7 @@
                                 <a class="dash-link" href="{{ route('leave.index') }}">{{ __('Manage Leave') }}</a>
                             </li>
 
-                        @endcan
+                        @endcan -->
                         @can('Manage Attendance')
                             <li class="dash-item dash-hasmenu">
                                 <a href="#!" class="dash-link"><span
@@ -261,6 +255,17 @@
                 </li>
             @endif
             <!--timesheet-->
+
+            <!-- employee-->
+            @if (Gate::check('Manage Employee'))
+                <li class="dash-item {{ Request::segment(1) == 'employee' ? 'active' : '' }}">
+                    <a href="{{ route('employee.index') }}" class="dash-link"><span class="dash-micon"><i
+                                    class="ti ti-user"></i></span><span
+                                class="dash-mtext">{{ __('HR Letter') }}</span></a>
+                </li>
+            @endif
+            <!-- employee-->
+            
 
             <!-- performance-->
             @if (Gate::check('Manage Indicator') || Gate::check('Manage Appraisal') || Gate::check('Manage Goal Tracking'))
@@ -571,7 +576,7 @@
                 <li class="dash-item">
                     <a href="{{ route('account-assets.index') }}" class="dash-link"><span class="dash-micon"><i
                                 class="ti ti-medical-cross"></i></span><span
-                            class="dash-mtext">{{ __('Assets') }}</span></a>
+                            class="dash-mtext">{{ __('Company Assets') }}</span></a>
                 </li>
             @endcan
 
