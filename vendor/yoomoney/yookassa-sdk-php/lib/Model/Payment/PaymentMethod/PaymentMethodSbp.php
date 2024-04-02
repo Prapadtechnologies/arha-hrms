@@ -1,9 +1,9 @@
 <?php
 
-/**
- * The MIT License.
+/*
+ * The MIT License
  *
- * Copyright (c) 2023 "YooMoney", NBСO LLC
+ * Copyright (c) 2024 "YooMoney", NBСO LLC
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -27,6 +27,7 @@
 namespace YooKassa\Model\Payment\PaymentMethod;
 
 use YooKassa\Model\Payment\PaymentMethodType;
+use YooKassa\Validator\Constraints as Assert;
 
 /**
  * Класс, представляющий модель PaymentMethodSbp.
@@ -37,12 +38,47 @@ use YooKassa\Model\Payment\PaymentMethodType;
  * @package  YooKassa\Model
  * @author   cms@yoomoney.ru
  * @link     https://yookassa.ru/developers/api
+ *
+ * @property string|null $sbp_operation_id Идентификатор операции в СБП (НСПК).
+ * @property string|null $sbpOperationId Идентификатор операции в СБП (НСПК).
  */
 class PaymentMethodSbp extends AbstractPaymentMethod
 {
+    /**
+     * Идентификатор операции в СБП (НСПК). Пример: `1027088AE4CB48CB81287833347A8777` Обязательный параметр для платежей в статусе ~`succeeded`. В остальных случаях может отсутствовать.
+     *
+     * @var string|null
+     */
+    #[Assert\Type('string')]
+    private ?string $_sbp_operation_id = null;
+
     public function __construct(?array $data = [])
     {
         parent::__construct($data);
         $this->setType(PaymentMethodType::SBP);
     }
+
+    /**
+     * Возвращает sbp_operation_id.
+     *
+     * @return string|null
+     */
+    public function getSbpOperationId(): ?string
+    {
+        return $this->_sbp_operation_id;
+    }
+
+    /**
+     * Устанавливает sbp_operation_id.
+     *
+     * @param string|null $sbp_operation_id Идентификатор операции в СБП (НСПК).
+     *
+     * @return self
+     */
+    public function setSbpOperationId(?string $sbp_operation_id = null): self
+    {
+        $this->_sbp_operation_id = $this->validatePropertyValue('_sbp_operation_id', $sbp_operation_id);
+        return $this;
+    }
+
 }

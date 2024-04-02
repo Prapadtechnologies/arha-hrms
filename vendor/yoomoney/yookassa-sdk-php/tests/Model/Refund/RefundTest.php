@@ -20,6 +20,8 @@ use YooKassa\Model\Refund\Refund;
 use YooKassa\Model\Refund\RefundCancellationDetails;
 use YooKassa\Model\Refund\RefundCancellationDetailsPartyCode;
 use YooKassa\Model\Refund\RefundCancellationDetailsReasonCode;
+use YooKassa\Model\Refund\RefundMethod\RefundMethodSbp;
+use YooKassa\Model\Refund\RefundMethodType;
 use YooKassa\Model\Refund\RefundStatus;
 use YooKassa\Model\Refund\Source;
 use YooKassa\Validator\Exceptions\EmptyPropertyValueException;
@@ -664,6 +666,63 @@ class RefundTest extends TestCase
             [null],
             [new RefundDealInfo(['id' => Random::str(36), 'amount' => 1, 'refund_settlements' => self::generateRefundSettlements()])],
             [new RefundDealInfo(['id' => Random::str(36), 'amount' => Random::float(0.01, 9999999.99), 'refund_settlements' => self::generateRefundSettlements()])],
+        ];
+    }
+
+    /**
+     * @dataProvider validRefundMethodDataProvider
+     *
+     * @param mixed $value
+     */
+    public function testGetSetRefundMethod($value): void
+    {
+        $instance = new Refund();
+
+        $instance->setRefundMethod($value);
+        if (is_array($value)) {
+            self::assertEquals($value, $instance->getRefundMethod()->toArray());
+            self::assertEquals($value, $instance->refundMethod->toArray());
+            self::assertEquals($value, $instance->refund_method->toArray());
+        } else {
+            self::assertEquals($value, $instance->getRefundMethod());
+            self::assertEquals($value, $instance->refundMethod);
+            self::assertEquals($value, $instance->refund_method);
+        }
+
+        $instance = new Refund();
+        $instance->refundMethod = $value;
+        if (is_array($value)) {
+            self::assertEquals($value, $instance->getRefundMethod()->toArray());
+            self::assertEquals($value, $instance->refundMethod->toArray());
+            self::assertEquals($value, $instance->refund_method->toArray());
+        } else {
+            self::assertEquals($value, $instance->getRefundMethod());
+            self::assertEquals($value, $instance->refundMethod);
+            self::assertEquals($value, $instance->refund_method);
+        }
+
+        $instance = new Refund();
+        $instance->refund_method = $value;
+        if (is_array($value)) {
+            self::assertEquals($value, $instance->getRefundMethod()->toArray());
+            self::assertEquals($value, $instance->refundMethod->toArray());
+            self::assertEquals($value, $instance->refund_method->toArray());
+        } else {
+            self::assertEquals($value, $instance->getRefundMethod());
+            self::assertEquals($value, $instance->refundMethod);
+            self::assertEquals($value, $instance->refund_method);
+        }
+    }
+
+    /**
+     * @throws Exception
+     */
+    public static function validRefundMethodDataProvider(): array
+    {
+        return [
+            [null],
+            [new RefundMethodSbp(['type' => RefundMethodType::SBP])],
+            [['type' => RefundMethodType::SBP, 'sbp_operation_id' => Random::str(36)]],
         ];
     }
 

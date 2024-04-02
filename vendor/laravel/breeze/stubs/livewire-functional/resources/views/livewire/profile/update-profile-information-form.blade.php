@@ -3,6 +3,8 @@
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Validation\Rule;
 
 use function Livewire\Volt\state;
@@ -13,7 +15,7 @@ state([
 ]);
 
 $updateProfileInformation = function () {
-    $user = auth()->user();
+    $user = Auth::user();
 
     $validated = $this->validate([
         'name' => ['required', 'string', 'max:255'],
@@ -32,19 +34,17 @@ $updateProfileInformation = function () {
 };
 
 $sendVerification = function () {
-    $user = auth()->user();
+    $user = Auth::user();
 
     if ($user->hasVerifiedEmail()) {
-        $path = session('url.intended', RouteServiceProvider::HOME);
-
-        $this->redirect($path);
+        $this->redirectIntended(default: RouteServiceProvider::HOME);
 
         return;
     }
 
     $user->sendEmailVerificationNotification();
 
-    session()->flash('status', 'verification-link-sent');
+    Session::flash('status', 'verification-link-sent');
 };
 
 ?>
@@ -94,7 +94,7 @@ $sendVerification = function () {
         <div class="flex items-center gap-4">
             <x-primary-button>{{ __('Save') }}</x-primary-button>
 
-            <x-action-message class="mr-3" on="profile-updated">
+            <x-action-message class="me-3" on="profile-updated">
                 {{ __('Saved.') }}
             </x-action-message>
         </div>

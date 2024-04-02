@@ -1,9 +1,9 @@
 <?php
 
-/**
- * The MIT License.
+/*
+ * The MIT License
  *
- * Copyright (c) 2023 "YooMoney", NBСO LLC
+ * Copyright (c) 2024 "YooMoney", NBСO LLC
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -35,6 +35,8 @@ use YooKassa\Model\CancellationDetailsInterface;
 use YooKassa\Model\Deal\RefundDealInfo;
 use YooKassa\Model\MonetaryAmount;
 use YooKassa\Model\Payment\ReceiptRegistrationStatus;
+use YooKassa\Model\Refund\RefundMethod\AbstractRefundMethod;
+use YooKassa\Model\Refund\RefundMethod\RefundMethodFactory;
 use YooKassa\Validator\Constraints as Assert;
 
 /**
@@ -61,6 +63,8 @@ use YooKassa\Validator\Constraints as Assert;
  * @property string $description Комментарий, основание для возврата средств покупателю
  * @property ListObjectInterface|SourceInterface[] $sources Данные о том, с какого магазина и какую сумму нужно удержать для проведения возврата
  * @property RefundDealInfo $deal Данные о сделке, в составе которой проходит возврат
+ * @property AbstractRefundMethod|null $refundMethod Детали возврата. Зависят от способа оплаты, который использовался при проведении платежа
+ * @property AbstractRefundMethod|null $refund_method Детали возврата. Зависят от способа оплаты, который использовался при проведении платежа
  */
 class Refund extends AbstractObject implements RefundInterface
 {
@@ -144,6 +148,12 @@ class Refund extends AbstractObject implements RefundInterface
     #[Assert\Valid]
     #[Assert\Type(RefundDealInfo::class)]
     protected ?RefundDealInfo $_deal = null;
+
+    /**
+     * @var AbstractRefundMethod|null Детали возврата. Зависят от способа оплаты, который использовался при проведении платежа.
+     */
+    #[Assert\Type(AbstractRefundMethod::class)]
+    private ?AbstractRefundMethod $_refund_method = null;
 
     /**
      * Возвращает идентификатор возврата платежа.
@@ -375,6 +385,32 @@ class Refund extends AbstractObject implements RefundInterface
     public function setDeal(mixed $deal = null): self
     {
         $this->_deal = $this->validatePropertyValue('_deal', $deal);
+        return $this;
+    }
+
+    /**
+     * Возвращает метод возврата.
+     *
+     * @return AbstractRefundMethod|null
+     */
+    public function getRefundMethod(): ?AbstractRefundMethod
+    {
+        return $this->_refund_method;
+    }
+
+    /**
+     * Устанавливает метод возврата.
+     *
+     * @param AbstractRefundMethod|array|null $refund_method
+     *
+     * @return self
+     */
+    public function setRefundMethod(mixed $refund_method = null): self
+    {
+        if (is_array($refund_method)) {
+            $refund_method = (new RefundMethodFactory)->factoryFromArray($refund_method);
+        }
+        $this->_refund_method = $this->validatePropertyValue('_refund_method', $refund_method);
         return $this;
     }
 }

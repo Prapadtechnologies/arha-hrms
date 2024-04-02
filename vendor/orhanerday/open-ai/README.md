@@ -46,7 +46,7 @@ repository useful! <br /><br /> Orhan*
 
 | Project Name           | Required PHP Version | Description                                                                                                                                                | Type (Official / Community) | Support                                                                                                                                |
 |------------------------|----------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
-| **orhanerday/open-ai** | **PHP 7.4+**         | **Most downloaded, forked, contributed, huge community supported, and used PHP SDK for OpenAI GPT-3 and DALL-E. It also supports chatGPT-like streaming.** | Community                   | Available, ([Community driven Discord Server](https://discord.gg/xpGUD528XJ) or personal mail [orhan@duck.com](mailto:orhan@duck.com)) |
+| **orhanerday/open-ai** | **PHP 7.4+**         | **Most downloaded, forked, contributed, huge community supported, and used PHP SDK for OpenAI GPT-3 and DALL-E. It also supports chatGPT-like streaming.** | Community                   | Available, ([Community driven Discord Server](https://discord.gg/xpGUD528XJ) or personal mail [orhann@duck.com](mailto:orhann@duck.com)) |
 | openai-** */c****t      | PHP 8.1+             | OpenAI PHP API client.                                                                                                                                     | Community                   | -                                                                                                                                      |
 
 
@@ -368,7 +368,7 @@ alternative tokens at each position.
 
  ```php
 $complete = $open_ai->completion([
-    'model' => 'text-davinci-002',
+    'model' => 'gpt-3.5-turbo-instruct',
     'prompt' => 'Hello',
     'temperature' => 0.9,
     'max_tokens' => 150,
@@ -776,6 +776,7 @@ Manage fine-tuning jobs to tailor a model to your specific training data.
 
  ```php
 $result = $open_ai->createFineTune([
+        "model" => "gpt-3.5-turbo-1106",
         "training_file" => "file-U3KoAAtGsjUKSPXwEUDdtw86",
 ]);
 ```
@@ -897,3 +898,7 @@ The MIT License (MIT). Please see [License File](LICENSE.md) for more informatio
 #### doge
 
 ![image](https://user-images.githubusercontent.com/22305274/209946556-164798d0-e404-4b6c-8669-d63e78f24228.png)
+
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=orhanerday/open-ai&type=Date)](https://star-history.com/#orhanerday/open-ai&Date)

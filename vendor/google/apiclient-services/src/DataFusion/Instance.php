@@ -35,6 +35,10 @@ class Instance extends \Google\Collection
   protected $cryptoKeyConfigType = CryptoKeyConfig::class;
   protected $cryptoKeyConfigDataType = '';
   /**
+   * @var bool
+   */
+  public $dataplexDataLineageIntegrationEnabled;
+  /**
    * @var string
    */
   public $dataprocServiceAccount;
@@ -212,6 +216,20 @@ class Instance extends \Google\Collection
   public function getCryptoKeyConfig()
   {
     return $this->cryptoKeyConfig;
+  }
+  /**
+   * @param bool
+   */
+  public function setDataplexDataLineageIntegrationEnabled($dataplexDataLineageIntegrationEnabled)
+  {
+    $this->dataplexDataLineageIntegrationEnabled = $dataplexDataLineageIntegrationEnabled;
+  }
+  /**
+   * @return bool
+   */
+  public function getDataplexDataLineageIntegrationEnabled()
+  {
+    return $this->dataplexDataLineageIntegrationEnabled;
   }
   /**
    * @param string

@@ -41,6 +41,10 @@ class ParameterMetadata extends \Google\Collection
   /**
    * @var bool
    */
+  public $hiddenUi;
+  /**
+   * @var bool
+   */
   public $isOptional;
   /**
    * @var string
@@ -136,6 +140,20 @@ class ParameterMetadata extends \Google\Collection
   public function getHelpText()
   {
     return $this->helpText;
+  }
+  /**
+   * @param bool
+   */
+  public function setHiddenUi($hiddenUi)
+  {
+    $this->hiddenUi = $hiddenUi;
+  }
+  /**
+   * @return bool
+   */
+  public function getHiddenUi()
+  {
+    return $this->hiddenUi;
   }
   /**
    * @param bool

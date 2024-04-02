@@ -18,6 +18,7 @@
 namespace Google\Service\VMwareEngine\Resource;
 
 use Google\Service\VMwareEngine\Credentials;
+use Google\Service\VMwareEngine\DnsForwarding;
 use Google\Service\VMwareEngine\ListPrivateCloudsResponse;
 use Google\Service\VMwareEngine\Operation;
 use Google\Service\VMwareEngine\Policy;
@@ -67,6 +68,7 @@ class ProjectsLocationsPrivateClouds extends \Google\Service\Resource
    * @opt_param bool validateOnly Optional. True if you want the request to be
    * validated and not executed; false otherwise.
    * @return Operation
+   * @throws \Google\Service\Exception
    */
   public function create($parent, PrivateCloud $postBody, $optParams = [])
   {
@@ -112,6 +114,7 @@ class ProjectsLocationsPrivateClouds extends \Google\Service\Resource
    * with the exception that zero UUID is not supported
    * (00000000-0000-0000-0000-000000000000).
    * @return Operation
+   * @throws \Google\Service\Exception
    */
   public function delete($name, $optParams = [])
   {
@@ -128,12 +131,31 @@ class ProjectsLocationsPrivateClouds extends \Google\Service\Resource
    * `projects/my-project/locations/us-central1-a/privateClouds/my-cloud`
    * @param array $optParams Optional parameters.
    * @return PrivateCloud
+   * @throws \Google\Service\Exception
    */
   public function get($name, $optParams = [])
   {
     $params = ['name' => $name];
     $params = array_merge($params, $optParams);
     return $this->call('get', [$params], PrivateCloud::class);
+  }
+  /**
+   * Gets details of the `DnsForwarding` config. (privateClouds.getDnsForwarding)
+   *
+   * @param string $name Required. The resource name of a `DnsForwarding` to
+   * retrieve. Resource names are schemeless URIs that follow the conventions in
+   * https://cloud.google.com/apis/design/resource_names. For example:
+   * `projects/my-project/locations/us-central1-a/privateClouds/my-
+   * cloud/dnsForwarding`
+   * @param array $optParams Optional parameters.
+   * @return DnsForwarding
+   * @throws \Google\Service\Exception
+   */
+  public function getDnsForwarding($name, $optParams = [])
+  {
+    $params = ['name' => $name];
+    $params = array_merge($params, $optParams);
+    return $this->call('getDnsForwarding', [$params], DnsForwarding::class);
   }
   /**
    * Gets the access control policy for a resource. Returns an empty policy if the
@@ -158,6 +180,7 @@ class ProjectsLocationsPrivateClouds extends \Google\Service\Resource
    * documentation](https://cloud.google.com/iam/help/conditions/resource-
    * policies).
    * @return Policy
+   * @throws \Google\Service\Exception
    */
   public function getIamPolicy($resource, $optParams = [])
   {
@@ -202,6 +225,7 @@ class ProjectsLocationsPrivateClouds extends \Google\Service\Resource
    * paginating, all other parameters provided to `ListPrivateClouds` must match
    * the call that provided the page token.
    * @return ListPrivateCloudsResponse
+   * @throws \Google\Service\Exception
    */
   public function listProjectsLocationsPrivateClouds($parent, $optParams = [])
   {
@@ -233,6 +257,7 @@ class ProjectsLocationsPrivateClouds extends \Google\Service\Resource
    * request. A field will be overwritten if it is in the mask. If the user does
    * not provide a mask then all fields will be overwritten.
    * @return Operation
+   * @throws \Google\Service\Exception
    */
   public function patch($name, PrivateCloud $postBody, $optParams = [])
   {
@@ -250,6 +275,7 @@ class ProjectsLocationsPrivateClouds extends \Google\Service\Resource
    * @param ResetNsxCredentialsRequest $postBody
    * @param array $optParams Optional parameters.
    * @return Operation
+   * @throws \Google\Service\Exception
    */
   public function resetNsxCredentials($privateCloud, ResetNsxCredentialsRequest $postBody, $optParams = [])
   {
@@ -268,6 +294,7 @@ class ProjectsLocationsPrivateClouds extends \Google\Service\Resource
    * @param ResetVcenterCredentialsRequest $postBody
    * @param array $optParams Optional parameters.
    * @return Operation
+   * @throws \Google\Service\Exception
    */
   public function resetVcenterCredentials($privateCloud, ResetVcenterCredentialsRequest $postBody, $optParams = [])
   {
@@ -287,6 +314,7 @@ class ProjectsLocationsPrivateClouds extends \Google\Service\Resource
    * @param SetIamPolicyRequest $postBody
    * @param array $optParams Optional parameters.
    * @return Policy
+   * @throws \Google\Service\Exception
    */
   public function setIamPolicy($resource, SetIamPolicyRequest $postBody, $optParams = [])
   {
@@ -304,6 +332,7 @@ class ProjectsLocationsPrivateClouds extends \Google\Service\Resource
    * example: `projects/my-project/locations/us-central1-a/privateClouds/my-cloud`
    * @param array $optParams Optional parameters.
    * @return Credentials
+   * @throws \Google\Service\Exception
    */
   public function showNsxCredentials($privateCloud, $optParams = [])
   {
@@ -320,7 +349,14 @@ class ProjectsLocationsPrivateClouds extends \Google\Service\Resource
    * the conventions in https://cloud.google.com/apis/design/resource_names. For
    * example: `projects/my-project/locations/us-central1-a/privateClouds/my-cloud`
    * @param array $optParams Optional parameters.
+   *
+   * @opt_param string username Optional. The username of the user to be queried
+   * for credentials. The default value of this field is CloudOwner@gve.local. The
+   * provided value must be one of the following: CloudOwner@gve.local, solution-
+   * user-01@gve.local, solution-user-02@gve.local, solution-user-03@gve.local,
+   * solution-user-04@gve.local, solution-user-05@gve.local, zertoadmin@gve.local.
    * @return Credentials
+   * @throws \Google\Service\Exception
    */
   public function showVcenterCredentials($privateCloud, $optParams = [])
   {
@@ -343,6 +379,7 @@ class ProjectsLocationsPrivateClouds extends \Google\Service\Resource
    * @param TestIamPermissionsRequest $postBody
    * @param array $optParams Optional parameters.
    * @return TestIamPermissionsResponse
+   * @throws \Google\Service\Exception
    */
   public function testIamPermissions($resource, TestIamPermissionsRequest $postBody, $optParams = [])
   {
@@ -363,12 +400,51 @@ class ProjectsLocationsPrivateClouds extends \Google\Service\Resource
    * @param UndeletePrivateCloudRequest $postBody
    * @param array $optParams Optional parameters.
    * @return Operation
+   * @throws \Google\Service\Exception
    */
   public function undelete($name, UndeletePrivateCloudRequest $postBody, $optParams = [])
   {
     $params = ['name' => $name, 'postBody' => $postBody];
     $params = array_merge($params, $optParams);
     return $this->call('undelete', [$params], Operation::class);
+  }
+  /**
+   * Updates the parameters of the `DnsForwarding` config, like associated
+   * domains. Only fields specified in `update_mask` are applied.
+   * (privateClouds.updateDnsForwarding)
+   *
+   * @param string $name Output only. The resource name of this DNS profile.
+   * Resource names are schemeless URIs that follow the conventions in
+   * https://cloud.google.com/apis/design/resource_names. For example:
+   * `projects/my-project/locations/us-central1-a/privateClouds/my-
+   * cloud/dnsForwarding`
+   * @param DnsForwarding $postBody
+   * @param array $optParams Optional parameters.
+   *
+   * @opt_param string requestId Optional. A request ID to identify requests.
+   * Specify a unique request ID so that if you must retry your request, the
+   * server will know to ignore the request if it has already been completed. The
+   * server guarantees that a request doesn't result in creation of duplicate
+   * commitments for at least 60 minutes. For example, consider a situation where
+   * you make an initial request and the request times out. If you make the
+   * request again with the same request ID, the server can check if original
+   * operation with the same request ID was received, and if so, will ignore the
+   * second request. This prevents clients from accidentally creating duplicate
+   * commitments. The request ID must be a valid UUID with the exception that zero
+   * UUID is not supported (00000000-0000-0000-0000-000000000000).
+   * @opt_param string updateMask Required. Field mask is used to specify the
+   * fields to be overwritten in the `DnsForwarding` resource by the update. The
+   * fields specified in the `update_mask` are relative to the resource, not the
+   * full request. A field will be overwritten if it is in the mask. If the user
+   * does not provide a mask then all fields will be overwritten.
+   * @return Operation
+   * @throws \Google\Service\Exception
+   */
+  public function updateDnsForwarding($name, DnsForwarding $postBody, $optParams = [])
+  {
+    $params = ['name' => $name, 'postBody' => $postBody];
+    $params = array_merge($params, $optParams);
+    return $this->call('updateDnsForwarding', [$params], Operation::class);
   }
 }
 

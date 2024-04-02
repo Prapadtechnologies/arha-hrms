@@ -1,3 +1,14 @@
+### v3.3.0 от 01.04.2024
+* Отключен платежный метод Qiwi
+
+### v3.2.0 от 11.12.2023
+* Добавлено поле `refund_method` в возвратах
+* Добавлено поле `sbp_operation_id` в `PaymentMethodSbp`
+* Добавлено поле `merchant_customer_bank_account` в объекте `FraudData`
+* Добавлен статус самозанятого `unregistered`
+* Добавлен список провайдеров онлайн-касс `FiscalizationProvider`
+* Добавлен объект Me с подобъектом `Fiscalization`
+
 ### v3.1.1 от 16.10.2023
 * PaymentRequest.save_payment_method может быть null
 

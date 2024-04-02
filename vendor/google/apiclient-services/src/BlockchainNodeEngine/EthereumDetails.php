@@ -32,10 +32,6 @@ class EthereumDetails extends \Google\Model
   /**
    * @var string
    */
-  public $beaconFeeRecipient;
-  /**
-   * @var string
-   */
   public $consensusClient;
   /**
    * @var string
@@ -51,6 +47,8 @@ class EthereumDetails extends \Google\Model
    * @var string
    */
   public $nodeType;
+  protected $validatorConfigType = ValidatorConfig::class;
+  protected $validatorConfigDataType = '';
 
   /**
    * @param EthereumEndpoints
@@ -93,20 +91,6 @@ class EthereumDetails extends \Google\Model
   public function getApiEnableDebug()
   {
     return $this->apiEnableDebug;
-  }
-  /**
-   * @param string
-   */
-  public function setBeaconFeeRecipient($beaconFeeRecipient)
-  {
-    $this->beaconFeeRecipient = $beaconFeeRecipient;
-  }
-  /**
-   * @return string
-   */
-  public function getBeaconFeeRecipient()
-  {
-    return $this->beaconFeeRecipient;
   }
   /**
    * @param string
@@ -177,6 +161,20 @@ class EthereumDetails extends \Google\Model
   public function getNodeType()
   {
     return $this->nodeType;
+  }
+  /**
+   * @param ValidatorConfig
+   */
+  public function setValidatorConfig(ValidatorConfig $validatorConfig)
+  {
+    $this->validatorConfig = $validatorConfig;
+  }
+  /**
+   * @return ValidatorConfig
+   */
+  public function getValidatorConfig()
+  {
+    return $this->validatorConfig;
   }
 }
 

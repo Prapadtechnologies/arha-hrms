@@ -12,6 +12,8 @@ use OutOfBoundsException;
  *
  * @template TValue
  * @implements Collection<int, TValue>
+ * @implements \ArrayAccess<int, TValue>
+ * @template-use Traits\GenericCollection<int, TValue>
  */
 final class Queue implements Collection, \ArrayAccess 
 {

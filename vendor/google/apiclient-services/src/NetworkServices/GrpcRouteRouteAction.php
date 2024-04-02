@@ -24,6 +24,10 @@ class GrpcRouteRouteAction extends \Google\Collection
   protected $destinationsDataType = 'array';
   protected $faultInjectionPolicyType = GrpcRouteFaultInjectionPolicy::class;
   protected $faultInjectionPolicyDataType = '';
+  /**
+   * @var string
+   */
+  public $idleTimeout;
   protected $retryPolicyType = GrpcRouteRetryPolicy::class;
   protected $retryPolicyDataType = '';
   protected $statefulSessionAffinityType = GrpcRouteStatefulSessionAffinityPolicy::class;
@@ -60,6 +64,20 @@ class GrpcRouteRouteAction extends \Google\Collection
   public function getFaultInjectionPolicy()
   {
     return $this->faultInjectionPolicy;
+  }
+  /**
+   * @param string
+   */
+  public function setIdleTimeout($idleTimeout)
+  {
+    $this->idleTimeout = $idleTimeout;
+  }
+  /**
+   * @return string
+   */
+  public function getIdleTimeout()
+  {
+    return $this->idleTimeout;
   }
   /**
    * @param GrpcRouteRetryPolicy

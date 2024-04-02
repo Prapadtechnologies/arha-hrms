@@ -14,7 +14,8 @@
 Возможные значения:
 - `pending` — ЮMoney запросили права на регистрацию чеков, но самозанятый еще не ответил на заявку;
 - `confirmed` — самозанятый выдал права ЮMoney; вы можете делать выплаты;
-- `canceled` — самозанятый отклонил заявку или отозвал ранее выданные права.
+- `canceled` — самозанятый отклонил заявку или отозвал ранее выданные права;
+- `unregistered` — самозанятый с таким ИНН не зарегистрирован в сервисе Мой налог, или пользователь потерял статус самозанятого.
 
 ---
 ### Constants
@@ -23,6 +24,7 @@
 | public | [PENDING](../classes/YooKassa-Model-SelfEmployed-SelfEmployedStatus.md#constant_PENDING) |  | ЮMoney запросили права на регистрацию чеков, но самозанятый еще не ответил на заявку |
 | public | [CONFIRMED](../classes/YooKassa-Model-SelfEmployed-SelfEmployedStatus.md#constant_CONFIRMED) |  | Самозанятый выдал права ЮMoney, вы можете делать выплаты |
 | public | [CANCELED](../classes/YooKassa-Model-SelfEmployed-SelfEmployedStatus.md#constant_CANCELED) |  | Самозанятый отклонил заявку или отозвал ранее выданные права |
+| public | [UNREGISTERED](../classes/YooKassa-Model-SelfEmployed-SelfEmployedStatus.md#constant_UNREGISTERED) |  | Самозанятый с таким ИНН не зарегистрирован в сервисе Мой налог, или пользователь потерял статус самозанятого |
 
 ---
 ### Properties
@@ -82,6 +84,15 @@ CONFIRMED = 'confirmed'
 
 ```php
 CANCELED = 'canceled'
+```
+
+
+<a name="constant_UNREGISTERED" class="anchor"></a>
+###### UNREGISTERED
+Самозанятый с таким ИНН не зарегистрирован в сервисе Мой налог, или пользователь потерял статус самозанятого
+
+```php
+UNREGISTERED = 'unregistered'
 ```
 
 
@@ -176,10 +187,10 @@ Static public valueExists(mixed $value) : bool
 ### Reports
 * [Errors - 0](../reports/errors.md)
 * [Markers - 0](../reports/markers.md)
-* [Deprecated - 15](../reports/deprecated.md)
+* [Deprecated - 22](../reports/deprecated.md)
 
 ---
 
-This document was automatically generated from source code comments on 2023-10-17 using [phpDocumentor](http://www.phpdoc.org/)
+This document was automatically generated from source code comments on 2024-04-01 using [phpDocumentor](http://www.phpdoc.org/)
 
-&copy; 2023 YooMoney
+&copy; 2024 YooMoney

@@ -33,6 +33,8 @@
 | public | [$paymentId](../classes/YooKassa-Model-Refund-Refund.md#property_paymentId) |  | Идентификатор платежа |
 | public | [$receipt_registration](../classes/YooKassa-Model-Refund-Refund.md#property_receipt_registration) |  | Статус регистрации чека |
 | public | [$receiptRegistration](../classes/YooKassa-Model-Refund-Refund.md#property_receiptRegistration) |  | Статус регистрации чека |
+| public | [$refund_method](../classes/YooKassa-Model-Refund-Refund.md#property_refund_method) |  | Детали возврата. Зависят от способа оплаты, который использовался при проведении платежа |
+| public | [$refundMethod](../classes/YooKassa-Model-Refund-Refund.md#property_refundMethod) |  | Детали возврата. Зависят от способа оплаты, который использовался при проведении платежа |
 | public | [$sources](../classes/YooKassa-Model-Refund-Refund.md#property_sources) |  | Данные о том, с какого магазина и какую сумму нужно удержать для проведения возврата |
 | public | [$status](../classes/YooKassa-Model-Refund-Refund.md#property_status) |  | Статус возврата |
 | protected | [$_amount](../classes/YooKassa-Model-Refund-Refund.md#property__amount) |  |  |
@@ -64,6 +66,7 @@
 | public | [getId()](../classes/YooKassa-Model-Refund-Refund.md#method_getId) |  | Возвращает идентификатор возврата платежа. |
 | public | [getPaymentId()](../classes/YooKassa-Model-Refund-Refund.md#method_getPaymentId) |  | Возвращает идентификатор платежа. |
 | public | [getReceiptRegistration()](../classes/YooKassa-Model-Refund-Refund.md#method_getReceiptRegistration) |  | Возвращает статус регистрации чека. |
+| public | [getRefundMethod()](../classes/YooKassa-Model-Refund-Refund.md#method_getRefundMethod) |  | Возвращает метод возврата. |
 | public | [getSources()](../classes/YooKassa-Model-Refund-Refund.md#method_getSources) |  | Возвращает информацию о распределении денег — сколько и в какой магазин нужно перевести. |
 | public | [getStatus()](../classes/YooKassa-Model-Refund-Refund.md#method_getStatus) |  | Возвращает статус текущего возврата. |
 | public | [getValidator()](../classes/YooKassa-Common-AbstractObject.md#method_getValidator) |  |  |
@@ -80,6 +83,7 @@
 | public | [setId()](../classes/YooKassa-Model-Refund-Refund.md#method_setId) |  | Устанавливает идентификатор возврата. |
 | public | [setPaymentId()](../classes/YooKassa-Model-Refund-Refund.md#method_setPaymentId) |  | Устанавливает идентификатор платежа. |
 | public | [setReceiptRegistration()](../classes/YooKassa-Model-Refund-Refund.md#method_setReceiptRegistration) |  | Устанавливает статус регистрации чека. |
+| public | [setRefundMethod()](../classes/YooKassa-Model-Refund-Refund.md#method_setRefundMethod) |  | Устанавливает метод возврата. |
 | public | [setSources()](../classes/YooKassa-Model-Refund-Refund.md#method_setSources) |  | Устанавливает sources (массив распределения денег между магазинами). |
 | public | [setStatus()](../classes/YooKassa-Model-Refund-Refund.md#method_setStatus) |  | Устанавливает статус возврата платежа. |
 | public | [toArray()](../classes/YooKassa-Common-AbstractObject.md#method_toArray) |  | Возвращает ассоциативный массив со свойствами текущего объекта для его дальнейшей JSON сериализации Является алиасом метода AbstractObject::jsonSerialize(). |
@@ -260,6 +264,30 @@ MAX_LENGTH_DESCRIPTION = 250
 Статус регистрации чека
 
 **Type:** <a href="../string"><abbr title="string">string</abbr></a>
+
+**Details:**
+
+
+<a name="property_refund_method"></a>
+#### public $refund_method : \YooKassa\Model\Refund\RefundMethod\AbstractRefundMethod|null
+---
+***Description***
+
+Детали возврата. Зависят от способа оплаты, который использовался при проведении платежа
+
+**Type:** <a href="../\YooKassa\Model\Refund\RefundMethod\AbstractRefundMethod|null"><abbr title="\YooKassa\Model\Refund\RefundMethod\AbstractRefundMethod|null">AbstractRefundMethod|null</abbr></a>
+
+**Details:**
+
+
+<a name="property_refundMethod"></a>
+#### public $refundMethod : \YooKassa\Model\Refund\RefundMethod\AbstractRefundMethod|null
+---
+***Description***
+
+Детали возврата. Зависят от способа оплаты, который использовался при проведении платежа
+
+**Type:** <a href="../\YooKassa\Model\Refund\RefundMethod\AbstractRefundMethod|null"><abbr title="\YooKassa\Model\Refund\RefundMethod\AbstractRefundMethod|null">AbstractRefundMethod|null</abbr></a>
 
 **Details:**
 
@@ -640,6 +668,23 @@ public getReceiptRegistration() : string|null
 **Returns:** string|null - Статус регистрации чека
 
 
+<a name="method_getRefundMethod" class="anchor"></a>
+#### public getRefundMethod() : \YooKassa\Model\Refund\RefundMethod\AbstractRefundMethod|null
+
+```php
+public getRefundMethod() : \YooKassa\Model\Refund\RefundMethod\AbstractRefundMethod|null
+```
+
+**Summary**
+
+Возвращает метод возврата.
+
+**Details:**
+* Inherited From: [\YooKassa\Model\Refund\Refund](../classes/YooKassa-Model-Refund-Refund.md)
+
+**Returns:** \YooKassa\Model\Refund\RefundMethod\AbstractRefundMethod|null - 
+
+
 <a name="method_getSources" class="anchor"></a>
 #### public getSources() : \YooKassa\Model\Refund\SourceInterface[]|\YooKassa\Common\ListObjectInterface
 
@@ -969,6 +1014,28 @@ public setReceiptRegistration(string|null $receipt_registration = null) : self
 **Returns:** self - 
 
 
+<a name="method_setRefundMethod" class="anchor"></a>
+#### public setRefundMethod() : self
+
+```php
+public setRefundMethod(\YooKassa\Model\Refund\RefundMethod\AbstractRefundMethod|array|null $refund_method = null) : self
+```
+
+**Summary**
+
+Устанавливает метод возврата.
+
+**Details:**
+* Inherited From: [\YooKassa\Model\Refund\Refund](../classes/YooKassa-Model-Refund-Refund.md)
+
+##### Parameters:
+| Type | Name | Description |
+| ---- | ---- | ----------- |
+| <code lang="php">\YooKassa\Model\Refund\RefundMethod\AbstractRefundMethod OR array OR null</code> | refund_method  |  |
+
+**Returns:** self - 
+
+
 <a name="method_setSources" class="anchor"></a>
 #### public setSources() : self
 
@@ -1079,10 +1146,10 @@ protected validatePropertyValue(string $propertyName, mixed $propertyValue) : mi
 ### Reports
 * [Errors - 0](../reports/errors.md)
 * [Markers - 0](../reports/markers.md)
-* [Deprecated - 15](../reports/deprecated.md)
+* [Deprecated - 22](../reports/deprecated.md)
 
 ---
 
-This document was automatically generated from source code comments on 2023-10-17 using [phpDocumentor](http://www.phpdoc.org/)
+This document was automatically generated from source code comments on 2024-04-01 using [phpDocumentor](http://www.phpdoc.org/)
 
-&copy; 2023 YooMoney
+&copy; 2024 YooMoney

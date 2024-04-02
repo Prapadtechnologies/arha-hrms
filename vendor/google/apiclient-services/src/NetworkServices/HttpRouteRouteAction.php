@@ -24,8 +24,14 @@ class HttpRouteRouteAction extends \Google\Collection
   protected $corsPolicyDataType = '';
   protected $destinationsType = HttpRouteDestination::class;
   protected $destinationsDataType = 'array';
+  protected $directResponseType = HttpRouteHttpDirectResponse::class;
+  protected $directResponseDataType = '';
   protected $faultInjectionPolicyType = HttpRouteFaultInjectionPolicy::class;
   protected $faultInjectionPolicyDataType = '';
+  /**
+   * @var string
+   */
+  public $idleTimeout;
   protected $redirectType = HttpRouteRedirect::class;
   protected $redirectDataType = '';
   protected $requestHeaderModifierType = HttpRouteHeaderModifier::class;
@@ -74,6 +80,20 @@ class HttpRouteRouteAction extends \Google\Collection
     return $this->destinations;
   }
   /**
+   * @param HttpRouteHttpDirectResponse
+   */
+  public function setDirectResponse(HttpRouteHttpDirectResponse $directResponse)
+  {
+    $this->directResponse = $directResponse;
+  }
+  /**
+   * @return HttpRouteHttpDirectResponse
+   */
+  public function getDirectResponse()
+  {
+    return $this->directResponse;
+  }
+  /**
    * @param HttpRouteFaultInjectionPolicy
    */
   public function setFaultInjectionPolicy(HttpRouteFaultInjectionPolicy $faultInjectionPolicy)
@@ -86,6 +106,20 @@ class HttpRouteRouteAction extends \Google\Collection
   public function getFaultInjectionPolicy()
   {
     return $this->faultInjectionPolicy;
+  }
+  /**
+   * @param string
+   */
+  public function setIdleTimeout($idleTimeout)
+  {
+    $this->idleTimeout = $idleTimeout;
+  }
+  /**
+   * @return string
+   */
+  public function getIdleTimeout()
+  {
+    return $this->idleTimeout;
   }
   /**
    * @param HttpRouteRedirect

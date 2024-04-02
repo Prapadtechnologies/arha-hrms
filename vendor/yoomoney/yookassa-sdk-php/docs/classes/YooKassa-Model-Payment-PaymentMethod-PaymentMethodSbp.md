@@ -21,6 +21,8 @@
 | ----------:| ---- | ---- | ------- |
 | public | [$id](../classes/YooKassa-Model-Payment-PaymentMethod-AbstractPaymentMethod.md#property_id) |  | Идентификатор записи о сохраненных платежных данных |
 | public | [$saved](../classes/YooKassa-Model-Payment-PaymentMethod-AbstractPaymentMethod.md#property_saved) |  | Возможность многократного использования |
+| public | [$sbp_operation_id](../classes/YooKassa-Model-Payment-PaymentMethod-PaymentMethodSbp.md#property_sbp_operation_id) |  | Идентификатор операции в СБП (НСПК). |
+| public | [$sbpOperationId](../classes/YooKassa-Model-Payment-PaymentMethod-PaymentMethodSbp.md#property_sbpOperationId) |  | Идентификатор операции в СБП (НСПК). |
 | public | [$title](../classes/YooKassa-Model-Payment-PaymentMethod-AbstractPaymentMethod.md#property_title) |  | Название метода оплаты |
 | public | [$type](../classes/YooKassa-Model-Payment-PaymentMethod-AbstractPaymentMethod.md#property_type) |  | Код способа оплаты |
 | protected | [$_id](../classes/YooKassa-Model-Payment-PaymentMethod-AbstractPaymentMethod.md#property__id) |  | Идентификатор записи о сохраненных платежных данных. |
@@ -40,6 +42,7 @@
 | public | [fromArray()](../classes/YooKassa-Common-AbstractObject.md#method_fromArray) |  | Устанавливает значения свойств текущего объекта из массива. |
 | public | [getId()](../classes/YooKassa-Model-Payment-PaymentMethod-AbstractPaymentMethod.md#method_getId) |  | Возвращает id. |
 | public | [getSaved()](../classes/YooKassa-Model-Payment-PaymentMethod-AbstractPaymentMethod.md#method_getSaved) |  | Возвращает saved. |
+| public | [getSbpOperationId()](../classes/YooKassa-Model-Payment-PaymentMethod-PaymentMethodSbp.md#method_getSbpOperationId) |  | Возвращает sbp_operation_id. |
 | public | [getTitle()](../classes/YooKassa-Model-Payment-PaymentMethod-AbstractPaymentMethod.md#method_getTitle) |  | Возвращает Название способа оплаты. |
 | public | [getType()](../classes/YooKassa-Model-Payment-PaymentMethod-AbstractPaymentMethod.md#method_getType) |  | Возвращает тип платежного метода. |
 | public | [getValidator()](../classes/YooKassa-Common-AbstractObject.md#method_getValidator) |  |  |
@@ -50,6 +53,7 @@
 | public | [offsetUnset()](../classes/YooKassa-Common-AbstractObject.md#method_offsetUnset) |  | Удаляет свойство. |
 | public | [setId()](../classes/YooKassa-Model-Payment-PaymentMethod-AbstractPaymentMethod.md#method_setId) |  | Устанавливает id. |
 | public | [setSaved()](../classes/YooKassa-Model-Payment-PaymentMethod-AbstractPaymentMethod.md#method_setSaved) |  | Устанавливает признак возможности многократного использования. |
+| public | [setSbpOperationId()](../classes/YooKassa-Model-Payment-PaymentMethod-PaymentMethodSbp.md#method_setSbpOperationId) |  | Устанавливает sbp_operation_id. |
 | public | [setTitle()](../classes/YooKassa-Model-Payment-PaymentMethod-AbstractPaymentMethod.md#method_setTitle) |  | Устанавливает Название способа оплаты. |
 | public | [setType()](../classes/YooKassa-Model-Payment-PaymentMethod-AbstractPaymentMethod.md#method_setType) |  | Устанавливает тип платежного метода. |
 | public | [toArray()](../classes/YooKassa-Common-AbstractObject.md#method_toArray) |  | Возвращает ассоциативный массив со свойствами текущего объекта для его дальнейшей JSON сериализации Является алиасом метода AbstractObject::jsonSerialize(). |
@@ -101,6 +105,30 @@
 
 **Details:**
 * Inherited From: [\YooKassa\Model\Payment\PaymentMethod\AbstractPaymentMethod](../classes/YooKassa-Model-Payment-PaymentMethod-AbstractPaymentMethod.md)
+
+
+<a name="property_sbp_operation_id"></a>
+#### public $sbp_operation_id : string|null
+---
+***Description***
+
+Идентификатор операции в СБП (НСПК).
+
+**Type:** <a href="../string|null"><abbr title="string|null">string|null</abbr></a>
+
+**Details:**
+
+
+<a name="property_sbpOperationId"></a>
+#### public $sbpOperationId : string|null
+---
+***Description***
+
+Идентификатор операции в СБП (НСПК).
+
+**Type:** <a href="../string|null"><abbr title="string|null">string|null</abbr></a>
+
+**Details:**
 
 
 <a name="property_title"></a>
@@ -347,6 +375,23 @@ public getSaved() : bool|null
 **Returns:** bool|null - 
 
 
+<a name="method_getSbpOperationId" class="anchor"></a>
+#### public getSbpOperationId() : string|null
+
+```php
+public getSbpOperationId() : string|null
+```
+
+**Summary**
+
+Возвращает sbp_operation_id.
+
+**Details:**
+* Inherited From: [\YooKassa\Model\Payment\PaymentMethod\PaymentMethodSbp](../classes/YooKassa-Model-Payment-PaymentMethod-PaymentMethodSbp.md)
+
+**Returns:** string|null - 
+
+
 <a name="method_getTitle" class="anchor"></a>
 #### public getTitle() : string|null
 
@@ -554,6 +599,28 @@ public setSaved(bool|array|null $saved = null) : self
 **Returns:** self - 
 
 
+<a name="method_setSbpOperationId" class="anchor"></a>
+#### public setSbpOperationId() : self
+
+```php
+public setSbpOperationId(string|null $sbp_operation_id = null) : self
+```
+
+**Summary**
+
+Устанавливает sbp_operation_id.
+
+**Details:**
+* Inherited From: [\YooKassa\Model\Payment\PaymentMethod\PaymentMethodSbp](../classes/YooKassa-Model-Payment-PaymentMethod-PaymentMethodSbp.md)
+
+##### Parameters:
+| Type | Name | Description |
+| ---- | ---- | ----------- |
+| <code lang="php">string OR null</code> | sbp_operation_id  | Идентификатор операции в СБП (НСПК). |
+
+**Returns:** self - 
+
+
 <a name="method_setTitle" class="anchor"></a>
 #### public setTitle() : self
 
@@ -669,10 +736,10 @@ protected validatePropertyValue(string $propertyName, mixed $propertyValue) : mi
 ### Reports
 * [Errors - 0](../reports/errors.md)
 * [Markers - 0](../reports/markers.md)
-* [Deprecated - 15](../reports/deprecated.md)
+* [Deprecated - 22](../reports/deprecated.md)
 
 ---
 
-This document was automatically generated from source code comments on 2023-10-17 using [phpDocumentor](http://www.phpdoc.org/)
+This document was automatically generated from source code comments on 2024-04-01 using [phpDocumentor](http://www.phpdoc.org/)
 
-&copy; 2023 YooMoney
+&copy; 2024 YooMoney

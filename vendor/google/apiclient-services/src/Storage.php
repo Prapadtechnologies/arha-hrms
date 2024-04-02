@@ -50,10 +50,12 @@ class Storage extends \Google\Service
   const DEVSTORAGE_READ_WRITE =
       "https://www.googleapis.com/auth/devstorage.read_write";
 
+  public $anywhereCaches;
   public $bucketAccessControls;
   public $buckets;
   public $channels;
   public $defaultObjectAccessControls;
+  public $folders;
   public $managedFolders;
   public $notifications;
   public $objectAccessControls;
@@ -78,6 +80,119 @@ class Storage extends \Google\Service
     $this->version = 'v1';
     $this->serviceName = 'storage';
 
+    $this->anywhereCaches = new Storage\Resource\AnywhereCaches(
+        $this,
+        $this->serviceName,
+        'anywhereCaches',
+        [
+          'methods' => [
+            'disable' => [
+              'path' => 'b/{bucket}/anywhereCaches/{anywhereCacheId}/disable',
+              'httpMethod' => 'POST',
+              'parameters' => [
+                'bucket' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'anywhereCacheId' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
+            ],'get' => [
+              'path' => 'b/{bucket}/anywhereCaches/{anywhereCacheId}',
+              'httpMethod' => 'GET',
+              'parameters' => [
+                'bucket' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'anywhereCacheId' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
+            ],'insert' => [
+              'path' => 'b/{bucket}/anywhereCaches',
+              'httpMethod' => 'POST',
+              'parameters' => [
+                'bucket' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
+            ],'list' => [
+              'path' => 'b/{bucket}/anywhereCaches',
+              'httpMethod' => 'GET',
+              'parameters' => [
+                'bucket' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'pageSize' => [
+                  'location' => 'query',
+                  'type' => 'integer',
+                ],
+                'pageToken' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+              ],
+            ],'pause' => [
+              'path' => 'b/{bucket}/anywhereCaches/{anywhereCacheId}/pause',
+              'httpMethod' => 'POST',
+              'parameters' => [
+                'bucket' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'anywhereCacheId' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
+            ],'resume' => [
+              'path' => 'b/{bucket}/anywhereCaches/{anywhereCacheId}/resume',
+              'httpMethod' => 'POST',
+              'parameters' => [
+                'bucket' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'anywhereCacheId' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
+            ],'update' => [
+              'path' => 'b/{bucket}/anywhereCaches/{anywhereCacheId}',
+              'httpMethod' => 'PATCH',
+              'parameters' => [
+                'bucket' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'anywhereCacheId' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+              ],
+            ],
+          ]
+        ]
+    );
     $this->bucketAccessControls = new Storage\Resource\BucketAccessControls(
         $this,
         $this->serviceName,
@@ -585,6 +700,138 @@ class Storage extends \Google\Service
           ]
         ]
     );
+    $this->folders = new Storage\Resource\Folders(
+        $this,
+        $this->serviceName,
+        'folders',
+        [
+          'methods' => [
+            'delete' => [
+              'path' => 'b/{bucket}/folders/{folder}',
+              'httpMethod' => 'DELETE',
+              'parameters' => [
+                'bucket' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'folder' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'ifMetagenerationMatch' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+                'ifMetagenerationNotMatch' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+              ],
+            ],'get' => [
+              'path' => 'b/{bucket}/folders/{folder}',
+              'httpMethod' => 'GET',
+              'parameters' => [
+                'bucket' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'folder' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'ifMetagenerationMatch' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+                'ifMetagenerationNotMatch' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+              ],
+            ],'insert' => [
+              'path' => 'b/{bucket}/folders',
+              'httpMethod' => 'POST',
+              'parameters' => [
+                'bucket' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'recursive' => [
+                  'location' => 'query',
+                  'type' => 'boolean',
+                ],
+              ],
+            ],'list' => [
+              'path' => 'b/{bucket}/folders',
+              'httpMethod' => 'GET',
+              'parameters' => [
+                'bucket' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'delimiter' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+                'endOffset' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+                'pageSize' => [
+                  'location' => 'query',
+                  'type' => 'integer',
+                ],
+                'pageToken' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+                'prefix' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+                'startOffset' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+              ],
+            ],'rename' => [
+              'path' => 'b/{bucket}/folders/{sourceFolder}/renameTo/folders/{destinationFolder}',
+              'httpMethod' => 'POST',
+              'parameters' => [
+                'bucket' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'sourceFolder' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'destinationFolder' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'ifSourceMetagenerationMatch' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+                'ifSourceMetagenerationNotMatch' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+              ],
+            ],
+          ]
+        ]
+    );
     $this->managedFolders = new Storage\Resource\ManagedFolders(
         $this,
         $this->serviceName,
@@ -604,6 +851,10 @@ class Storage extends \Google\Service
                   'location' => 'path',
                   'type' => 'string',
                   'required' => true,
+                ],
+                'allowNonEmpty' => [
+                  'location' => 'query',
+                  'type' => 'boolean',
                 ],
                 'ifMetagenerationMatch' => [
                   'location' => 'query',
@@ -1398,14 +1649,14 @@ class Storage extends \Google\Service
                   'type' => 'string',
                   'required' => true,
                 ],
-                'copySourceAcl' => [
-                  'location' => 'query',
-                  'type' => 'boolean',
-                ],
                 'generation' => [
                   'location' => 'query',
                   'type' => 'string',
                   'required' => true,
+                ],
+                'copySourceAcl' => [
+                  'location' => 'query',
+                  'type' => 'boolean',
                 ],
                 'ifGenerationMatch' => [
                   'location' => 'query',

@@ -82,8 +82,12 @@ class UpdateNodePoolRequest extends \Google\Collection
    * @var string
    */
   public $projectId;
+  protected $queuedProvisioningType = QueuedProvisioning::class;
+  protected $queuedProvisioningDataType = '';
   protected $resourceLabelsType = ResourceLabels::class;
   protected $resourceLabelsDataType = '';
+  protected $resourceManagerTagsType = ResourceManagerTags::class;
+  protected $resourceManagerTagsDataType = '';
   protected $tagsType = NetworkTags::class;
   protected $tagsDataType = '';
   protected $taintsType = NodeTaints::class;
@@ -380,6 +384,20 @@ class UpdateNodePoolRequest extends \Google\Collection
     return $this->projectId;
   }
   /**
+   * @param QueuedProvisioning
+   */
+  public function setQueuedProvisioning(QueuedProvisioning $queuedProvisioning)
+  {
+    $this->queuedProvisioning = $queuedProvisioning;
+  }
+  /**
+   * @return QueuedProvisioning
+   */
+  public function getQueuedProvisioning()
+  {
+    return $this->queuedProvisioning;
+  }
+  /**
    * @param ResourceLabels
    */
   public function setResourceLabels(ResourceLabels $resourceLabels)
@@ -392,6 +410,20 @@ class UpdateNodePoolRequest extends \Google\Collection
   public function getResourceLabels()
   {
     return $this->resourceLabels;
+  }
+  /**
+   * @param ResourceManagerTags
+   */
+  public function setResourceManagerTags(ResourceManagerTags $resourceManagerTags)
+  {
+    $this->resourceManagerTags = $resourceManagerTags;
+  }
+  /**
+   * @return ResourceManagerTags
+   */
+  public function getResourceManagerTags()
+  {
+    return $this->resourceManagerTags;
   }
   /**
    * @param NetworkTags

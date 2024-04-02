@@ -14,6 +14,7 @@ use YooKassa\Model\Metadata;
 use YooKassa\Model\MonetaryAmount;
 use YooKassa\Model\Payment\ConfirmationType;
 use YooKassa\Model\Payment\Payment;
+use YooKassa\Model\Payment\PaymentMethodType;
 use YooKassa\Model\Payment\Recipient;
 use YooKassa\Model\Receipt\PaymentMode;
 use YooKassa\Model\Receipt\PaymentSubject;
@@ -25,7 +26,7 @@ use YooKassa\Request\Payments\CreatePaymentRequest;
 use YooKassa\Request\Payments\CreatePaymentRequestBuilder;
 use YooKassa\Request\Payments\FraudData;
 use YooKassa\Request\Payments\Locale;
-use YooKassa\Request\Payments\PaymentData\PaymentDataQiwi;
+use YooKassa\Request\Payments\PaymentData\PaymentDataMobileBalance;
 use YooKassa\Request\Payments\TransferData;
 
 /**
@@ -799,7 +800,7 @@ class CreatePaymentRequestTest extends TestCase
         self::assertFalse($instance->validate());
         $instance->setPaymentMethodId(null);
         self::assertTrue($instance->validate());
-        $instance->setPaymentMethodData(new PaymentDataQiwi(['phone' => Random::str(11, '0123456789')]));
+        $instance->setPaymentMethodData(new PaymentDataMobileBalance(['phone' => Random::str(11, '0123456789')]));
         self::assertFalse($instance->validate());
         $instance->setPaymentToken(null);
         self::assertTrue($instance->validate());
@@ -949,7 +950,7 @@ class CreatePaymentRequestTest extends TestCase
                 'referenceId' => uniqid('', true),
                 'paymentToken' => uniqid('', true),
                 'paymentMethodId' => uniqid('', true),
-                'paymentMethodData' => new PaymentDataQiwi(['phone' => Random::str(11, '0123456789')]),
+                'paymentMethodData' => new PaymentDataMobileBalance(['phone' => Random::str(11, '0123456789')]),
                 'confirmation' => new ConfirmationAttributesExternal(),
                 'savePaymentMethod' => Random::bool(),
                 'capture' => Random::bool(),
@@ -997,7 +998,7 @@ class CreatePaymentRequestTest extends TestCase
                 'referenceId' => uniqid('', true),
                 'paymentToken' => uniqid('', true),
                 'paymentMethodId' => uniqid('', true),
-                'paymentMethodData' => ['phone' => Random::str(11, '0123456789'), 'type' => 'qiwi', ],
+                'paymentMethodData' => ['phone' => Random::str(11, '0123456789'), 'type' => PaymentMethodType::MOBILE_BALANCE, ],
                 'confirmation' => [
                     'return_url' => 'https://test.com',
                     'type' => ConfirmationType::MOBILE_APPLICATION,

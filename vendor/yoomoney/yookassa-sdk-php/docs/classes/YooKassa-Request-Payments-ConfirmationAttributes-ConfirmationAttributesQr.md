@@ -22,6 +22,8 @@
 | ----------:| ---- | ---- | ------- |
 | public | [$locale](../classes/YooKassa-Request-Payments-ConfirmationAttributes-ConfirmationAttributesQr.md#property_locale) |  | Язык интерфейса, писем и смс, которые будет видеть или получать пользователь |
 | public | [$locale](../classes/YooKassa-Request-Payments-ConfirmationAttributes-AbstractConfirmationAttributes.md#property_locale) |  | Язык интерфейса, писем и смс, которые будет видеть или получать пользователь |
+| public | [$return_url](../classes/YooKassa-Request-Payments-ConfirmationAttributes-ConfirmationAttributesQr.md#property_return_url) |  | URL или диплинк, на который вернется пользователь после подтверждения или отмены платежа в приложении. |
+| public | [$returnUrl](../classes/YooKassa-Request-Payments-ConfirmationAttributes-ConfirmationAttributesQr.md#property_returnUrl) |  | URL или диплинк, на который вернется пользователь после подтверждения или отмены платежа в приложении. |
 | public | [$type](../classes/YooKassa-Request-Payments-ConfirmationAttributes-ConfirmationAttributesQr.md#property_type) |  | Код сценария подтверждения |
 | public | [$type](../classes/YooKassa-Request-Payments-ConfirmationAttributes-AbstractConfirmationAttributes.md#property_type) |  | Код сценария подтверждения |
 | protected | [$_locale](../classes/YooKassa-Request-Payments-ConfirmationAttributes-AbstractConfirmationAttributes.md#property__locale) |  |  |
@@ -38,6 +40,7 @@
 | public | [__unset()](../classes/YooKassa-Common-AbstractObject.md#method___unset) |  | Удаляет свойство. |
 | public | [fromArray()](../classes/YooKassa-Common-AbstractObject.md#method_fromArray) |  | Устанавливает значения свойств текущего объекта из массива. |
 | public | [getLocale()](../classes/YooKassa-Request-Payments-ConfirmationAttributes-AbstractConfirmationAttributes.md#method_getLocale) |  | Возвращает язык интерфейса, писем и смс |
+| public | [getReturnUrl()](../classes/YooKassa-Request-Payments-ConfirmationAttributes-ConfirmationAttributesQr.md#method_getReturnUrl) |  |  |
 | public | [getType()](../classes/YooKassa-Request-Payments-ConfirmationAttributes-AbstractConfirmationAttributes.md#method_getType) |  | Возвращает код сценария подтверждения |
 | public | [getValidator()](../classes/YooKassa-Common-AbstractObject.md#method_getValidator) |  |  |
 | public | [jsonSerialize()](../classes/YooKassa-Common-AbstractObject.md#method_jsonSerialize) |  | Возвращает ассоциативный массив со свойствами текущего объекта для его дальнейшей JSON сериализации. |
@@ -46,6 +49,7 @@
 | public | [offsetSet()](../classes/YooKassa-Common-AbstractObject.md#method_offsetSet) |  | Устанавливает значение свойства. |
 | public | [offsetUnset()](../classes/YooKassa-Common-AbstractObject.md#method_offsetUnset) |  | Удаляет свойство. |
 | public | [setLocale()](../classes/YooKassa-Request-Payments-ConfirmationAttributes-AbstractConfirmationAttributes.md#method_setLocale) |  | Устанавливает язык интерфейса, писем и смс |
+| public | [setReturnUrl()](../classes/YooKassa-Request-Payments-ConfirmationAttributes-ConfirmationAttributesQr.md#method_setReturnUrl) |  |  |
 | public | [setType()](../classes/YooKassa-Request-Payments-ConfirmationAttributes-AbstractConfirmationAttributes.md#method_setType) |  | Устанавливает код сценария подтверждения. |
 | public | [toArray()](../classes/YooKassa-Common-AbstractObject.md#method_toArray) |  | Возвращает ассоциативный массив со свойствами текущего объекта для его дальнейшей JSON сериализации Является алиасом метода AbstractObject::jsonSerialize(). |
 | protected | [getUnknownProperties()](../classes/YooKassa-Common-AbstractObject.md#method_getUnknownProperties) |  | Возвращает массив свойств которые не существуют, но были заданы у объекта. |
@@ -95,6 +99,30 @@
 
 **Details:**
 * Inherited From: [\YooKassa\Request\Payments\ConfirmationAttributes\AbstractConfirmationAttributes](../classes/YooKassa-Request-Payments-ConfirmationAttributes-AbstractConfirmationAttributes.md)
+
+
+<a name="property_return_url"></a>
+#### public $return_url : string|null
+---
+***Description***
+
+URL или диплинк, на который вернется пользователь после подтверждения или отмены платежа в приложении.
+
+**Type:** <a href="../string|null"><abbr title="string|null">string|null</abbr></a>
+
+**Details:**
+
+
+<a name="property_returnUrl"></a>
+#### public $returnUrl : string|null
+---
+***Description***
+
+URL или диплинк, на который вернется пользователь после подтверждения или отмены платежа в приложении.
+
+**Type:** <a href="../string|null"><abbr title="string|null">string|null</abbr></a>
+
+**Details:**
 
 
 <a name="property_type"></a>
@@ -289,6 +317,19 @@ public getLocale() : string|null
 **Returns:** string|null - Язык интерфейса, писем и смс
 
 
+<a name="method_getReturnUrl" class="anchor"></a>
+#### public getReturnUrl() : string|null
+
+```php
+public getReturnUrl() : string|null
+```
+
+**Details:**
+* Inherited From: [\YooKassa\Request\Payments\ConfirmationAttributes\ConfirmationAttributesQr](../classes/YooKassa-Request-Payments-ConfirmationAttributes-ConfirmationAttributesQr.md)
+
+**Returns:** string|null - URL или диплинк, на который вернется пользователь после подтверждения или отмены платежа в приложении
+
+
 <a name="method_getType" class="anchor"></a>
 #### public getType() : string|null
 
@@ -447,6 +488,24 @@ public setLocale(string|null $locale = null) : self
 **Returns:** self - 
 
 
+<a name="method_setReturnUrl" class="anchor"></a>
+#### public setReturnUrl() : self
+
+```php
+public setReturnUrl(string|null $return_url = null) : self
+```
+
+**Details:**
+* Inherited From: [\YooKassa\Request\Payments\ConfirmationAttributes\ConfirmationAttributesQr](../classes/YooKassa-Request-Payments-ConfirmationAttributes-ConfirmationAttributesQr.md)
+
+##### Parameters:
+| Type | Name | Description |
+| ---- | ---- | ----------- |
+| <code lang="php">string OR null</code> | return_url  | URL или диплинк, на который вернется пользователь после подтверждения или отмены платежа в приложении |
+
+**Returns:** self - 
+
+
 <a name="method_setType" class="anchor"></a>
 #### public setType() : self
 
@@ -535,10 +594,10 @@ protected validatePropertyValue(string $propertyName, mixed $propertyValue) : mi
 ### Reports
 * [Errors - 0](../reports/errors.md)
 * [Markers - 0](../reports/markers.md)
-* [Deprecated - 15](../reports/deprecated.md)
+* [Deprecated - 22](../reports/deprecated.md)
 
 ---
 
-This document was automatically generated from source code comments on 2023-10-17 using [phpDocumentor](http://www.phpdoc.org/)
+This document was automatically generated from source code comments on 2024-04-01 using [phpDocumentor](http://www.phpdoc.org/)
 
-&copy; 2023 YooMoney
+&copy; 2024 YooMoney

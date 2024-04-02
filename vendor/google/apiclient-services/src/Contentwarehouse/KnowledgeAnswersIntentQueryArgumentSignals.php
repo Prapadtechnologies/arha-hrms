@@ -42,6 +42,8 @@ class KnowledgeAnswersIntentQueryArgumentSignals extends \Google\Collection
    * @var string
    */
   public $contextResolution;
+  protected $copleySourceTypeListType = CopleySourceTypeList::class;
+  protected $copleySourceTypeListDataType = '';
   /**
    * @var string[]
    */
@@ -58,6 +60,8 @@ class KnowledgeAnswersIntentQueryArgumentSignals extends \Google\Collection
   protected $entityRelationshipDataType = 'array';
   protected $expressionStatusType = NlpSemanticParsingExpressionStatus::class;
   protected $expressionStatusDataType = '';
+  protected $facetType = KnowledgeAnswersFacetParsing::class;
+  protected $facetDataType = '';
   /**
    * @var bool
    */
@@ -132,6 +136,14 @@ class KnowledgeAnswersIntentQueryArgumentSignals extends \Google\Collection
   public $parsedDueToExperiment;
   protected $personalEntityType = KnowledgeAnswersIntentQueryPersonalEntity::class;
   protected $personalEntityDataType = 'array';
+  /**
+   * @var float
+   */
+  public $personalQrefReferenceScore;
+  /**
+   * @var float
+   */
+  public $personalQrefResolutionScore;
   protected $provenanceType = KnowledgeAnswersIntentQueryArgumentProvenance::class;
   protected $provenanceDataType = 'array';
   /**
@@ -166,12 +178,20 @@ class KnowledgeAnswersIntentQueryArgumentSignals extends \Google\Collection
   protected $saftSignalsDataType = '';
   protected $shoppingIdsType = KnowledgeAnswersIntentQueryShoppingIds::class;
   protected $shoppingIdsDataType = '';
+  /**
+   * @var string
+   */
+  public $source;
   protected $supportTransferRulesType = LogsSemanticInterpretationIntentQuerySupportTransferRule::class;
   protected $supportTransferRulesDataType = 'array';
   protected $supportTransferSignalsType = KnowledgeAnswersIntentQuerySupportTransferSignals::class;
   protected $supportTransferSignalsDataType = '';
   protected $ungroundedValueTypeType = KnowledgeAnswersValueType::class;
   protected $ungroundedValueTypeDataType = '';
+  /**
+   * @var string
+   */
+  public $valueSource;
   /**
    * @var string
    */
@@ -294,6 +314,20 @@ class KnowledgeAnswersIntentQueryArgumentSignals extends \Google\Collection
     return $this->contextResolution;
   }
   /**
+   * @param CopleySourceTypeList
+   */
+  public function setCopleySourceTypeList(CopleySourceTypeList $copleySourceTypeList)
+  {
+    $this->copleySourceTypeList = $copleySourceTypeList;
+  }
+  /**
+   * @return CopleySourceTypeList
+   */
+  public function getCopleySourceTypeList()
+  {
+    return $this->copleySourceTypeList;
+  }
+  /**
    * @param string[]
    */
   public function setDeprecatedFreebaseType($deprecatedFreebaseType)
@@ -362,6 +396,20 @@ class KnowledgeAnswersIntentQueryArgumentSignals extends \Google\Collection
   public function getExpressionStatus()
   {
     return $this->expressionStatus;
+  }
+  /**
+   * @param KnowledgeAnswersFacetParsing
+   */
+  public function setFacet(KnowledgeAnswersFacetParsing $facet)
+  {
+    $this->facet = $facet;
+  }
+  /**
+   * @return KnowledgeAnswersFacetParsing
+   */
+  public function getFacet()
+  {
+    return $this->facet;
   }
   /**
    * @param bool
@@ -694,6 +742,34 @@ class KnowledgeAnswersIntentQueryArgumentSignals extends \Google\Collection
     return $this->personalEntity;
   }
   /**
+   * @param float
+   */
+  public function setPersonalQrefReferenceScore($personalQrefReferenceScore)
+  {
+    $this->personalQrefReferenceScore = $personalQrefReferenceScore;
+  }
+  /**
+   * @return float
+   */
+  public function getPersonalQrefReferenceScore()
+  {
+    return $this->personalQrefReferenceScore;
+  }
+  /**
+   * @param float
+   */
+  public function setPersonalQrefResolutionScore($personalQrefResolutionScore)
+  {
+    $this->personalQrefResolutionScore = $personalQrefResolutionScore;
+  }
+  /**
+   * @return float
+   */
+  public function getPersonalQrefResolutionScore()
+  {
+    return $this->personalQrefResolutionScore;
+  }
+  /**
    * @param KnowledgeAnswersIntentQueryArgumentProvenance[]
    */
   public function setProvenance($provenance)
@@ -862,6 +938,20 @@ class KnowledgeAnswersIntentQueryArgumentSignals extends \Google\Collection
     return $this->shoppingIds;
   }
   /**
+   * @param string
+   */
+  public function setSource($source)
+  {
+    $this->source = $source;
+  }
+  /**
+   * @return string
+   */
+  public function getSource()
+  {
+    return $this->source;
+  }
+  /**
    * @param LogsSemanticInterpretationIntentQuerySupportTransferRule[]
    */
   public function setSupportTransferRules($supportTransferRules)
@@ -902,6 +992,20 @@ class KnowledgeAnswersIntentQueryArgumentSignals extends \Google\Collection
   public function getUngroundedValueType()
   {
     return $this->ungroundedValueType;
+  }
+  /**
+   * @param string
+   */
+  public function setValueSource($valueSource)
+  {
+    $this->valueSource = $valueSource;
+  }
+  /**
+   * @return string
+   */
+  public function getValueSource()
+  {
+    return $this->valueSource;
   }
   /**
    * @param string

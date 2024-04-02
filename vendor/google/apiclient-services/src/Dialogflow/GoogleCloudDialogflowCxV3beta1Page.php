@@ -25,6 +25,10 @@ class GoogleCloudDialogflowCxV3beta1Page extends \Google\Collection
   /**
    * @var string
    */
+  public $description;
+  /**
+   * @var string
+   */
   public $displayName;
   protected $entryFulfillmentType = GoogleCloudDialogflowCxV3beta1Fulfillment::class;
   protected $entryFulfillmentDataType = '';
@@ -58,6 +62,20 @@ class GoogleCloudDialogflowCxV3beta1Page extends \Google\Collection
   public function getAdvancedSettings()
   {
     return $this->advancedSettings;
+  }
+  /**
+   * @param string
+   */
+  public function setDescription($description)
+  {
+    $this->description = $description;
+  }
+  /**
+   * @return string
+   */
+  public function getDescription()
+  {
+    return $this->description;
   }
   /**
    * @param string

@@ -49,7 +49,7 @@ class CreatePaymentRequestBuilderTest extends TestCase
         $builder->setAccountId($options['accountId']);
         $instance = $builder->build($this->getRequiredData('accountId'));
 
-        if (null === $options['accountId'] || '' === $options['accountId']) {
+        if (empty($options['accountId'])) {
             self::assertNull($instance->getRecipient());
         } else {
             self::assertNotNull($instance->getRecipient());

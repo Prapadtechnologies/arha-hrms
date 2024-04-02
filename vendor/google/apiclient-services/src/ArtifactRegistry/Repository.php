@@ -33,6 +33,10 @@ class Repository extends \Google\Model
    * @var string
    */
   public $description;
+  /**
+   * @var bool
+   */
+  public $disallowUnspecifiedMode;
   protected $dockerConfigType = DockerRepositoryConfig::class;
   protected $dockerConfigDataType = '';
   /**
@@ -129,6 +133,20 @@ class Repository extends \Google\Model
   public function getDescription()
   {
     return $this->description;
+  }
+  /**
+   * @param bool
+   */
+  public function setDisallowUnspecifiedMode($disallowUnspecifiedMode)
+  {
+    $this->disallowUnspecifiedMode = $disallowUnspecifiedMode;
+  }
+  /**
+   * @return bool
+   */
+  public function getDisallowUnspecifiedMode()
+  {
+    return $this->disallowUnspecifiedMode;
   }
   /**
    * @param DockerRepositoryConfig

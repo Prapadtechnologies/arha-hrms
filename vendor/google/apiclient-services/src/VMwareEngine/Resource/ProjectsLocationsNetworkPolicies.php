@@ -17,6 +17,7 @@
 
 namespace Google\Service\VMwareEngine\Resource;
 
+use Google\Service\VMwareEngine\FetchNetworkPolicyExternalAddressesResponse;
 use Google\Service\VMwareEngine\ListNetworkPoliciesResponse;
 use Google\Service\VMwareEngine\NetworkPolicy;
 use Google\Service\VMwareEngine\Operation;
@@ -64,6 +65,7 @@ class ProjectsLocationsNetworkPolicies extends \Google\Service\Resource
    * commitments. The request ID must be a valid UUID with the exception that zero
    * UUID is not supported (00000000-0000-0000-0000-000000000000).
    * @return Operation
+   * @throws \Google\Service\Exception
    */
   public function create($parent, NetworkPolicy $postBody, $optParams = [])
   {
@@ -94,12 +96,41 @@ class ProjectsLocationsNetworkPolicies extends \Google\Service\Resource
    * commitments. The request ID must be a valid UUID with the exception that zero
    * UUID is not supported (00000000-0000-0000-0000-000000000000).
    * @return Operation
+   * @throws \Google\Service\Exception
    */
   public function delete($name, $optParams = [])
   {
     $params = ['name' => $name];
     $params = array_merge($params, $optParams);
     return $this->call('delete', [$params], Operation::class);
+  }
+  /**
+   * Lists external IP addresses assigned to VMware workload VMs within the scope
+   * of the given network policy. (networkPolicies.fetchExternalAddresses)
+   *
+   * @param string $networkPolicy Required. The resource name of the network
+   * policy to query for assigned external IP addresses. Resource names are
+   * schemeless URIs that follow the conventions in
+   * https://cloud.google.com/apis/design/resource_names. For example:
+   * `projects/my-project/locations/us-central1/networkPolicies/my-policy`
+   * @param array $optParams Optional parameters.
+   *
+   * @opt_param int pageSize The maximum number of external IP addresses to return
+   * in one page. The service may return fewer than this value. The maximum value
+   * is coerced to 1000. The default value of this field is 500.
+   * @opt_param string pageToken A page token, received from a previous
+   * `FetchNetworkPolicyExternalAddresses` call. Provide this to retrieve the
+   * subsequent page. When paginating, all parameters provided to
+   * `FetchNetworkPolicyExternalAddresses`, except for `page_size` and
+   * `page_token`, must match the call that provided the page token.
+   * @return FetchNetworkPolicyExternalAddressesResponse
+   * @throws \Google\Service\Exception
+   */
+  public function fetchExternalAddresses($networkPolicy, $optParams = [])
+  {
+    $params = ['networkPolicy' => $networkPolicy];
+    $params = array_merge($params, $optParams);
+    return $this->call('fetchExternalAddresses', [$params], FetchNetworkPolicyExternalAddressesResponse::class);
   }
   /**
    * Retrieves a `NetworkPolicy` resource by its resource name.
@@ -111,6 +142,7 @@ class ProjectsLocationsNetworkPolicies extends \Google\Service\Resource
    * `projects/my-project/locations/us-central1/networkPolicies/my-network-policy`
    * @param array $optParams Optional parameters.
    * @return NetworkPolicy
+   * @throws \Google\Service\Exception
    */
   public function get($name, $optParams = [])
   {
@@ -152,6 +184,7 @@ class ProjectsLocationsNetworkPolicies extends \Google\Service\Resource
    * When paginating, all other parameters provided to `ListNetworkPolicies` must
    * match the call that provided the page token.
    * @return ListNetworkPoliciesResponse
+   * @throws \Google\Service\Exception
    */
   public function listProjectsLocationsNetworkPolicies($parent, $optParams = [])
   {
@@ -195,6 +228,7 @@ class ProjectsLocationsNetworkPolicies extends \Google\Service\Resource
    * full request. A field will be overwritten if it is in the mask. If the user
    * does not provide a mask then all fields will be overwritten.
    * @return Operation
+   * @throws \Google\Service\Exception
    */
   public function patch($name, NetworkPolicy $postBody, $optParams = [])
   {

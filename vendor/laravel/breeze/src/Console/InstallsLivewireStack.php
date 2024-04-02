@@ -20,13 +20,13 @@ trait InstallsLivewireStack
             return [
                 '@tailwindcss/forms' => '^0.5.2',
                 'autoprefixer' => '^10.4.2',
-                'postcss' => '^8.4.6',
+                'postcss' => '^8.4.31',
                 'tailwindcss' => '^3.1.0',
             ] + $packages;
         });
 
         // Install Livewire...
-        if (! $this->requireComposerPackages(['livewire/livewire:^3.0', 'livewire/volt:^1.0'])) {
+        if (! $this->requireComposerPackages(['livewire/livewire:^3.4', 'livewire/volt:^1.0'])) {
             return 1;
         }
 
@@ -64,6 +64,14 @@ trait InstallsLivewireStack
         // Components...
         (new Filesystem)->ensureDirectoryExists(app_path('View/Components'));
         (new Filesystem)->copyDirectory(__DIR__.'/../../stubs/default/app/View/Components', app_path('View/Components'));
+
+        // Actions...
+        (new Filesystem)->ensureDirectoryExists(app_path('Livewire/Actions'));
+        (new Filesystem)->copyDirectory(__DIR__.'/../../stubs/livewire-common/app/Livewire/Actions', app_path('Livewire/Actions'));
+
+        // Forms...
+        (new Filesystem)->ensureDirectoryExists(app_path('Livewire/Forms'));
+        (new Filesystem)->copyDirectory(__DIR__.'/../../stubs/livewire-common/app/Livewire/Forms', app_path('Livewire/Forms'));
 
         // Dark mode...
         if (! $this->option('dark')) {

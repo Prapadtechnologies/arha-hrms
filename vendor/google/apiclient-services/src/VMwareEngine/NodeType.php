@@ -19,11 +19,15 @@ namespace Google\Service\VMwareEngine;
 
 class NodeType extends \Google\Collection
 {
-  protected $collection_key = 'availableCustomCoreCounts';
+  protected $collection_key = 'families';
   /**
    * @var int[]
    */
   public $availableCustomCoreCounts;
+  /**
+   * @var string[]
+   */
+  public $capabilities;
   /**
    * @var int
    */
@@ -32,6 +36,14 @@ class NodeType extends \Google\Collection
    * @var string
    */
   public $displayName;
+  /**
+   * @var string[]
+   */
+  public $families;
+  /**
+   * @var string
+   */
+  public $kind;
   /**
    * @var int
    */
@@ -68,6 +80,20 @@ class NodeType extends \Google\Collection
     return $this->availableCustomCoreCounts;
   }
   /**
+   * @param string[]
+   */
+  public function setCapabilities($capabilities)
+  {
+    $this->capabilities = $capabilities;
+  }
+  /**
+   * @return string[]
+   */
+  public function getCapabilities()
+  {
+    return $this->capabilities;
+  }
+  /**
    * @param int
    */
   public function setDiskSizeGb($diskSizeGb)
@@ -94,6 +120,34 @@ class NodeType extends \Google\Collection
   public function getDisplayName()
   {
     return $this->displayName;
+  }
+  /**
+   * @param string[]
+   */
+  public function setFamilies($families)
+  {
+    $this->families = $families;
+  }
+  /**
+   * @return string[]
+   */
+  public function getFamilies()
+  {
+    return $this->families;
+  }
+  /**
+   * @param string
+   */
+  public function setKind($kind)
+  {
+    $this->kind = $kind;
+  }
+  /**
+   * @return string
+   */
+  public function getKind()
+  {
+    return $this->kind;
   }
   /**
    * @param int

@@ -12,6 +12,8 @@ use OutOfRangeException;
  *
  * @template TValue
  * @implements Collection<int, TValue>
+ * @implements \ArrayAccess<int, TValue>
+ * @template-use Traits\GenericCollection<int, TValue>
  */
 final class Set implements Collection, \ArrayAccess 
 {

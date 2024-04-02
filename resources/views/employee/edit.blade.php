@@ -71,11 +71,6 @@
                                     {!! Form::label('address', __('Address'), ['class' => 'form-label']) !!}<span class="text-danger pl-1">*</span>
                                     {!! Form::textarea('address', null, ['class' => 'form-control', 'rows' => 3]) !!}
                                 </div>
-                                @if (\Auth::user()->type == 'employee')
-                                    <div class="float-end">
-                                        {!! Form::submit('Update', ['class' => 'btn btn-primary']) !!}
-                                    </div>
-                                @endif
                             </div>
                         </div>
                     </div>
@@ -168,7 +163,7 @@
                         </div>
                     @endif
                 </div>
-                @if (\Auth::user()->type != 'employee')
+                @if (\Auth::user()->type == 'employee' || \Auth::user()->type == 'hr' || \Auth::user()->type == 'admin')
                     <div class="row">
                         <div class="col-md-6 ">
                             <div class="card em-card">
@@ -357,7 +352,7 @@
                     </div>
                 @endif
 
-                @if (\Auth::user()->type != 'employee')
+                @if (\Auth::user()->type == 'employee' || \Auth::user()->type == 'hr' || \Auth::user()->type == 'admin')
                     <div class="float-end">
                         <button type="submit" class="btn  btn-primary">{{ 'Update' }}</button>
                     </div>

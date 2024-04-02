@@ -1,9 +1,9 @@
 <?php
 
-/**
- * The MIT License.
+/*
+ * The MIT License
  *
- * Copyright (c) 2023 "YooMoney", NBСO LLC
+ * Copyright (c) 2024 "YooMoney", NBСO LLC
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -36,7 +36,8 @@ use YooKassa\Common\AbstractEnum;
  * Возможные значения:
  * - `pending` — ЮMoney запросили права на регистрацию чеков, но самозанятый еще не ответил на заявку;
  * - `confirmed` — самозанятый выдал права ЮMoney; вы можете делать выплаты;
- * - `canceled` — самозанятый отклонил заявку или отозвал ранее выданные права.
+ * - `canceled` — самозанятый отклонил заявку или отозвал ранее выданные права;
+ * - `unregistered` — самозанятый с таким ИНН не зарегистрирован в сервисе Мой налог, или пользователь потерял статус самозанятого.
  *
  * @category Class
  * @package  YooKassa\Model
@@ -54,6 +55,9 @@ class SelfEmployedStatus extends AbstractEnum
     /** Самозанятый отклонил заявку или отозвал ранее выданные права */
     public const CANCELED = 'canceled';
 
+    /** Самозанятый с таким ИНН не зарегистрирован в сервисе Мой налог, или пользователь потерял статус самозанятого */
+    public const UNREGISTERED = 'unregistered';
+
     /**
      * Возвращает список доступных значений
      * @return string[]
@@ -62,5 +66,6 @@ class SelfEmployedStatus extends AbstractEnum
         self::PENDING => true,
         self::CONFIRMED => true,
         self::CANCELED => true,
+        self::UNREGISTERED => true,
     ];
 }

@@ -27,7 +27,7 @@
 - `psb` - ПромсвязьБанк
 - `installments` - Заплатить по частям
 - `wechat` - Платеж через WeChat
-- `sbp` - Платеж через через сервис быстрых платежей
+- `sbp` - Платеж через сервис быстрых платежей
 
 ---
 ### Constants
@@ -40,7 +40,7 @@
 | public | [MOBILE_BALANCE](../classes/YooKassa-Model-Payment-PaymentMethodType.md#constant_MOBILE_BALANCE) |  | Платеж с баланса мобильного телефона |
 | public | [APPLE_PAY](../classes/YooKassa-Model-Payment-PaymentMethodType.md#constant_APPLE_PAY) |  | латеж ApplePay |
 | public | [GOOGLE_PAY](../classes/YooKassa-Model-Payment-PaymentMethodType.md#constant_GOOGLE_PAY) |  | Платеж Google Pay |
-| public | [QIWI](../classes/YooKassa-Model-Payment-PaymentMethodType.md#constant_QIWI) |  | Платеж из кошелька Qiwi |
+| public | [QIWI](../classes/YooKassa-Model-Payment-PaymentMethodType.md#constant_QIWI) | *deprecated* | Платеж из кошелька Qiwi |
 | public | [WEBMONEY](../classes/YooKassa-Model-Payment-PaymentMethodType.md#constant_WEBMONEY) | *deprecated* | Платеж из кошелька Webmoney |
 | public | [ALFABANK](../classes/YooKassa-Model-Payment-PaymentMethodType.md#constant_ALFABANK) | *deprecated* | Платеж через Альфа-Клик |
 | public | [B2B_SBERBANK](../classes/YooKassa-Model-Payment-PaymentMethodType.md#constant_B2B_SBERBANK) |  | Сбербанк Бизнес Онлайн |
@@ -150,13 +150,15 @@ GOOGLE_PAY = 'google_pay'
 
 
 <a name="constant_QIWI" class="anchor"></a>
-###### QIWI
+###### ~~QIWI~~
 Платеж из кошелька Qiwi
 
 ```php
 QIWI = 'qiwi'
 ```
 
+**deprecated**
+Больше недоступен
 
 <a name="constant_WEBMONEY" class="anchor"></a>
 ###### ~~WEBMONEY~~
@@ -340,10 +342,10 @@ Static public valueExists(mixed $value) : bool
 ### Reports
 * [Errors - 0](../reports/errors.md)
 * [Markers - 0](../reports/markers.md)
-* [Deprecated - 15](../reports/deprecated.md)
+* [Deprecated - 22](../reports/deprecated.md)
 
 ---
 
-This document was automatically generated from source code comments on 2023-10-17 using [phpDocumentor](http://www.phpdoc.org/)
+This document was automatically generated from source code comments on 2024-04-01 using [phpDocumentor](http://www.phpdoc.org/)
 
-&copy; 2023 YooMoney
+&copy; 2024 YooMoney

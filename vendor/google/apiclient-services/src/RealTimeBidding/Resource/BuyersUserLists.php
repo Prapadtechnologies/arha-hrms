@@ -42,6 +42,7 @@ class BuyersUserLists extends \Google\Service\Resource
    * @param CloseUserListRequest $postBody
    * @param array $optParams Optional parameters.
    * @return UserList
+   * @throws \Google\Service\Exception
    */
   public function close($name, CloseUserListRequest $postBody, $optParams = [])
   {
@@ -60,6 +61,7 @@ class BuyersUserLists extends \Google\Service\Resource
    * @param UserList $postBody
    * @param array $optParams Optional parameters.
    * @return UserList
+   * @throws \Google\Service\Exception
    */
   public function create($parent, UserList $postBody, $optParams = [])
   {
@@ -74,6 +76,7 @@ class BuyersUserLists extends \Google\Service\Resource
    * UserList.name.
    * @param array $optParams Optional parameters.
    * @return UserList
+   * @throws \Google\Service\Exception
    */
   public function get($name, $optParams = [])
   {
@@ -82,12 +85,13 @@ class BuyersUserLists extends \Google\Service\Resource
     return $this->call('get', [$params], UserList::class);
   }
   /**
-   * Deprecated. This will be removed in October 2023. For more information, see
-   * the release notes: https://developers.google.com/authorized-
-   * buyers/apis/relnotes#real-time-bidding-api Gets remarketing tag for a buyer.
-   * A remarketing tag is a piece of JavaScript code that can be placed on a web
-   * page. When a user visits a page containing a remarketing tag, Google adds the
-   * user to a user list. (userLists.getRemarketingTag)
+   * This has been sunset as of October 2023, and will return an error response if
+   * called. For more information, see the release notes:
+   * https://developers.google.com/authorized-buyers/apis/relnotes#real-time-
+   * bidding-api Gets remarketing tag for a buyer. A remarketing tag is a piece of
+   * JavaScript code that can be placed on a web page. When a user visits a page
+   * containing a remarketing tag, Google adds the user to a user list.
+   * (userLists.getRemarketingTag)
    *
    * @param string $name Required. To fetch the remarketing tag for an account,
    * the name must follow the pattern `buyers/{accountId}`, where `{accountId}`
@@ -98,6 +102,7 @@ class BuyersUserLists extends \Google\Service\Resource
    * `buyers/{accountId}/userLists/{userListId}`. See UserList.name.
    * @param array $optParams Optional parameters.
    * @return GetRemarketingTagResponse
+   * @throws \Google\Service\Exception
    */
   public function getRemarketingTag($name, $optParams = [])
   {
@@ -120,6 +125,7 @@ class BuyersUserLists extends \Google\Service\Resource
    * @opt_param string pageToken Continuation page token as received from a
    * previous response.
    * @return ListUserListsResponse
+   * @throws \Google\Service\Exception
    */
   public function listBuyersUserLists($parent, $optParams = [])
   {
@@ -136,6 +142,7 @@ class BuyersUserLists extends \Google\Service\Resource
    * @param OpenUserListRequest $postBody
    * @param array $optParams Optional parameters.
    * @return UserList
+   * @throws \Google\Service\Exception
    */
   public function open($name, OpenUserListRequest $postBody, $optParams = [])
   {
@@ -156,6 +163,7 @@ class BuyersUserLists extends \Google\Service\Resource
    * @param UserList $postBody
    * @param array $optParams Optional parameters.
    * @return UserList
+   * @throws \Google\Service\Exception
    */
   public function update($name, UserList $postBody, $optParams = [])
   {

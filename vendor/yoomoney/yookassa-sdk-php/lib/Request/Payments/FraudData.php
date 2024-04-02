@@ -1,9 +1,9 @@
 <?php
 
-/**
- * The MIT License.
+/*
+ * The MIT License
  *
- * Copyright (c) 2023 "YooMoney", NBСO LLC
+ * Copyright (c) 2024 "YooMoney", NBСO LLC
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -26,7 +26,6 @@
 
 namespace YooKassa\Request\Payments;
 
-use Exception;
 use YooKassa\Common\AbstractObject;
 use YooKassa\Validator\Constraints as Assert;
 
@@ -40,8 +39,10 @@ use YooKassa\Validator\Constraints as Assert;
  * @author   cms@yoomoney.ru
  * @link     https://yookassa.ru/developers/api
  *
- * @property string $toppedUpPhone Номер телефона для пополнения
- * @property string $topped_up_phone Номер телефона для пополнения
+ * @property string|null $toppedUpPhone Номер телефона для пополнения
+ * @property string|null $topped_up_phone Номер телефона для пополнения
+ * @property MerchantCustomerBankAccount|null $merchantCustomerBankAccount Данные банковского счета, открытого в вашей системе
+ * @property MerchantCustomerBankAccount|null $merchant_customer_bank_account Данные банковского счета, открытого в вашей системе
  */
 class FraudData extends AbstractObject
 {
@@ -53,6 +54,14 @@ class FraudData extends AbstractObject
     #[Assert\Type('string')]
     #[Assert\Regex("/^[0-9]{4,15}$/")]
     private ?string $_topped_up_phone = null;
+
+    /**
+     * Данные банковского счета, открытого в вашей системе.
+     * Необходимо передавать, если пользователь [пополняет свой счет](/developers/payment-acceptance/scenario-extensions/bank-account-in-merchant-system).
+     * @var MerchantCustomerBankAccount|null
+     */
+    #[Assert\Type(MerchantCustomerBankAccount::class)]
+    private ?MerchantCustomerBankAccount $_merchant_customer_bank_account = null;
 
     /**
      * Возвращает номер телефона для пополнения.
@@ -74,6 +83,29 @@ class FraudData extends AbstractObject
     public function setToppedUpPhone(?string $topped_up_phone = null): self
     {
         $this->_topped_up_phone = $this->validatePropertyValue('_topped_up_phone', $topped_up_phone);
+        return $this;
+    }
+
+    /**
+     * Возвращает данные банковского счета, открытого в вашей системе.
+     *
+     * @return MerchantCustomerBankAccount|null Данные банковского счета
+     */
+    public function getMerchantCustomerBankAccount(): ?MerchantCustomerBankAccount
+    {
+        return $this->_merchant_customer_bank_account;
+    }
+
+    /**
+     * Устанавливает данные банковского счета, открытого в вашей системе.
+     *
+     * @param MerchantCustomerBankAccount|array|null $merchant_customer_bank_account Данные банковского счета
+     *
+     * @return self
+     */
+    public function setMerchantCustomerBankAccount(mixed $merchant_customer_bank_account = null): self
+    {
+        $this->_merchant_customer_bank_account = $this->validatePropertyValue('_merchant_customer_bank_account', $merchant_customer_bank_account);
         return $this;
     }
 }

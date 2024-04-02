@@ -54,6 +54,12 @@ class GoogleCloudDialogflowCxV3QueryParameters extends \Google\Collection
    * @var array[]
    */
   public $payload;
+  /**
+   * @var bool
+   */
+  public $populateDataStoreConnectionSignals;
+  protected $searchConfigType = GoogleCloudDialogflowCxV3SearchConfig::class;
+  protected $searchConfigDataType = '';
   protected $sessionEntityTypesType = GoogleCloudDialogflowCxV3SessionEntityType::class;
   protected $sessionEntityTypesDataType = 'array';
   /**
@@ -194,6 +200,34 @@ class GoogleCloudDialogflowCxV3QueryParameters extends \Google\Collection
   public function getPayload()
   {
     return $this->payload;
+  }
+  /**
+   * @param bool
+   */
+  public function setPopulateDataStoreConnectionSignals($populateDataStoreConnectionSignals)
+  {
+    $this->populateDataStoreConnectionSignals = $populateDataStoreConnectionSignals;
+  }
+  /**
+   * @return bool
+   */
+  public function getPopulateDataStoreConnectionSignals()
+  {
+    return $this->populateDataStoreConnectionSignals;
+  }
+  /**
+   * @param GoogleCloudDialogflowCxV3SearchConfig
+   */
+  public function setSearchConfig(GoogleCloudDialogflowCxV3SearchConfig $searchConfig)
+  {
+    $this->searchConfig = $searchConfig;
+  }
+  /**
+   * @return GoogleCloudDialogflowCxV3SearchConfig
+   */
+  public function getSearchConfig()
+  {
+    return $this->searchConfig;
   }
   /**
    * @param GoogleCloudDialogflowCxV3SessionEntityType[]

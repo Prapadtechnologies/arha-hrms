@@ -1,9 +1,9 @@
 <?php
 
-/**
- * The MIT License.
+/*
+ * The MIT License
  *
- * Copyright (c) 2023 "YooMoney", NBСO LLC
+ * Copyright (c) 2024 "YooMoney", NBСO LLC
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -49,7 +49,7 @@ use YooKassa\Common\AbstractEnum;
  * - `psb` - ПромсвязьБанк
  * - `installments` - Заплатить по частям
  * - `wechat` - Платеж через WeChat
- * - `sbp` - Платеж через через сервис быстрых платежей
+ * - `sbp` - Платеж через сервис быстрых платежей
  *
  * @category Class
  * @package  YooKassa\Model
@@ -79,7 +79,11 @@ class PaymentMethodType extends AbstractEnum
     /** Платеж Google Pay */
     public const GOOGLE_PAY = 'google_pay';
 
-    /** Платеж из кошелька Qiwi */
+    /**
+     * Платеж из кошелька Qiwi
+     *
+     * @deprecated Больше недоступен
+     */
     public const QIWI = 'qiwi';
 
     /**
@@ -140,7 +144,7 @@ class PaymentMethodType extends AbstractEnum
         self::MOBILE_BALANCE => true,
         self::APPLE_PAY => false,
         self::GOOGLE_PAY => false,
-        self::QIWI => true,
+        self::QIWI => false,
         self::WEBMONEY => false,
         self::ALFABANK => false,
         self::TINKOFF_BANK => true,

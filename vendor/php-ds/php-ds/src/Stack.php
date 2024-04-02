@@ -11,7 +11,9 @@ use OutOfBoundsException;
  * @package Ds
  *
  * @template TValue
- * @implements Sequence<TValue>
+ * @implements Collection<int, TValue>
+ * @implements \ArrayAccess<int, TValue>
+ * @template-use Traits\GenericCollection<int, TValue>
  */
 final class Stack implements Collection, \ArrayAccess
 {

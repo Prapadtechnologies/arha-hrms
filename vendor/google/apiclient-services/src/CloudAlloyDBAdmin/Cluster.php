@@ -83,6 +83,10 @@ class Cluster extends \Google\Model
    * @var bool
    */
   public $reconciling;
+  /**
+   * @var bool
+   */
+  public $satisfiesPzs;
   protected $secondaryConfigType = SecondaryConfig::class;
   protected $secondaryConfigDataType = '';
   protected $sslConfigType = SslConfig::class;
@@ -393,6 +397,20 @@ class Cluster extends \Google\Model
   public function getReconciling()
   {
     return $this->reconciling;
+  }
+  /**
+   * @param bool
+   */
+  public function setSatisfiesPzs($satisfiesPzs)
+  {
+    $this->satisfiesPzs = $satisfiesPzs;
+  }
+  /**
+   * @return bool
+   */
+  public function getSatisfiesPzs()
+  {
+    return $this->satisfiesPzs;
   }
   /**
    * @param SecondaryConfig

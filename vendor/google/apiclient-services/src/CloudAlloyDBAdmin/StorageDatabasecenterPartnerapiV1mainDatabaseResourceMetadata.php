@@ -17,8 +17,9 @@
 
 namespace Google\Service\CloudAlloyDBAdmin;
 
-class StorageDatabasecenterPartnerapiV1mainDatabaseResourceMetadata extends \Google\Model
+class StorageDatabasecenterPartnerapiV1mainDatabaseResourceMetadata extends \Google\Collection
 {
+  protected $collection_key = 'entitlements';
   protected $availabilityConfigurationType = StorageDatabasecenterPartnerapiV1mainAvailabilityConfiguration::class;
   protected $availabilityConfigurationDataType = '';
   protected $backupConfigurationType = StorageDatabasecenterPartnerapiV1mainBackupConfiguration::class;
@@ -33,10 +34,10 @@ class StorageDatabasecenterPartnerapiV1mainDatabaseResourceMetadata extends \Goo
    * @var string
    */
   public $currentState;
-  /**
-   * @var array[]
-   */
-  public $customMetadata;
+  protected $customMetadataType = StorageDatabasecenterPartnerapiV1mainCustomMetadataData::class;
+  protected $customMetadataDataType = '';
+  protected $entitlementsType = StorageDatabasecenterPartnerapiV1mainEntitlement::class;
+  protected $entitlementsDataType = 'array';
   /**
    * @var string
    */
@@ -67,6 +68,8 @@ class StorageDatabasecenterPartnerapiV1mainDatabaseResourceMetadata extends \Goo
    * @var string
    */
   public $updationTime;
+  protected $userLabelSetType = StorageDatabasecenterPartnerapiV1mainUserLabels::class;
+  protected $userLabelSetDataType = '';
   /**
    * @var string[]
    */
@@ -143,18 +146,32 @@ class StorageDatabasecenterPartnerapiV1mainDatabaseResourceMetadata extends \Goo
     return $this->currentState;
   }
   /**
-   * @param array[]
+   * @param StorageDatabasecenterPartnerapiV1mainCustomMetadataData
    */
-  public function setCustomMetadata($customMetadata)
+  public function setCustomMetadata(StorageDatabasecenterPartnerapiV1mainCustomMetadataData $customMetadata)
   {
     $this->customMetadata = $customMetadata;
   }
   /**
-   * @return array[]
+   * @return StorageDatabasecenterPartnerapiV1mainCustomMetadataData
    */
   public function getCustomMetadata()
   {
     return $this->customMetadata;
+  }
+  /**
+   * @param StorageDatabasecenterPartnerapiV1mainEntitlement[]
+   */
+  public function setEntitlements($entitlements)
+  {
+    $this->entitlements = $entitlements;
+  }
+  /**
+   * @return StorageDatabasecenterPartnerapiV1mainEntitlement[]
+   */
+  public function getEntitlements()
+  {
+    return $this->entitlements;
   }
   /**
    * @param string
@@ -281,6 +298,20 @@ class StorageDatabasecenterPartnerapiV1mainDatabaseResourceMetadata extends \Goo
   public function getUpdationTime()
   {
     return $this->updationTime;
+  }
+  /**
+   * @param StorageDatabasecenterPartnerapiV1mainUserLabels
+   */
+  public function setUserLabelSet(StorageDatabasecenterPartnerapiV1mainUserLabels $userLabelSet)
+  {
+    $this->userLabelSet = $userLabelSet;
+  }
+  /**
+   * @return StorageDatabasecenterPartnerapiV1mainUserLabels
+   */
+  public function getUserLabelSet()
+  {
+    return $this->userLabelSet;
   }
   /**
    * @param string[]

@@ -399,6 +399,10 @@ class Dataform extends \Google\Service
                   'type' => 'string',
                   'required' => true,
                 ],
+                'filter' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
                 'pageSize' => [
                   'location' => 'query',
                   'type' => 'integer',
@@ -903,6 +907,10 @@ class Dataform extends \Google\Service
                   'location' => 'query',
                   'type' => 'string',
                 ],
+                'revision' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
               ],
             ],'removeDirectory' => [
               'path' => 'v1beta1/{+workspace}:removeDirectory',
@@ -932,6 +940,28 @@ class Dataform extends \Google\Service
                   'location' => 'path',
                   'type' => 'string',
                   'required' => true,
+                ],
+              ],
+            ],'searchFiles' => [
+              'path' => 'v1beta1/{+workspace}:searchFiles',
+              'httpMethod' => 'GET',
+              'parameters' => [
+                'workspace' => [
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ],
+                'filter' => [
+                  'location' => 'query',
+                  'type' => 'string',
+                ],
+                'pageSize' => [
+                  'location' => 'query',
+                  'type' => 'integer',
+                ],
+                'pageToken' => [
+                  'location' => 'query',
+                  'type' => 'string',
                 ],
               ],
             ],'setIamPolicy' => [

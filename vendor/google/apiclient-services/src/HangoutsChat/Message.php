@@ -20,6 +20,8 @@ namespace Google\Service\HangoutsChat;
 class Message extends \Google\Collection
 {
   protected $collection_key = 'emojiReactionSummaries';
+  protected $accessoryWidgetsType = AccessoryWidget::class;
+  protected $accessoryWidgetsDataType = 'array';
   protected $actionResponseType = ActionResponse::class;
   protected $actionResponseDataType = '';
   protected $annotationsType = Annotation::class;
@@ -70,6 +72,8 @@ class Message extends \Google\Collection
    * @var string
    */
   public $name;
+  protected $privateMessageViewerType = User::class;
+  protected $privateMessageViewerDataType = '';
   protected $quotedMessageMetadataType = QuotedMessageMetadata::class;
   protected $quotedMessageMetadataDataType = '';
   protected $senderType = User::class;
@@ -89,6 +93,20 @@ class Message extends \Google\Collection
    */
   public $threadReply;
 
+  /**
+   * @param AccessoryWidget[]
+   */
+  public function setAccessoryWidgets($accessoryWidgets)
+  {
+    $this->accessoryWidgets = $accessoryWidgets;
+  }
+  /**
+   * @return AccessoryWidget[]
+   */
+  public function getAccessoryWidgets()
+  {
+    return $this->accessoryWidgets;
+  }
   /**
    * @param ActionResponse
    */
@@ -326,6 +344,20 @@ class Message extends \Google\Collection
   public function getName()
   {
     return $this->name;
+  }
+  /**
+   * @param User
+   */
+  public function setPrivateMessageViewer(User $privateMessageViewer)
+  {
+    $this->privateMessageViewer = $privateMessageViewer;
+  }
+  /**
+   * @return User
+   */
+  public function getPrivateMessageViewer()
+  {
+    return $this->privateMessageViewer;
   }
   /**
    * @param QuotedMessageMetadata

@@ -22,8 +22,12 @@ class Finding extends \Google\Collection
   protected $collection_key = 'processes';
   protected $accessType = Access::class;
   protected $accessDataType = '';
+  protected $applicationType = Application::class;
+  protected $applicationDataType = '';
   protected $attackExposureType = AttackExposure::class;
   protected $attackExposureDataType = '';
+  protected $backupDisasterRecoveryType = BackupDisasterRecovery::class;
+  protected $backupDisasterRecoveryDataType = '';
   /**
    * @var string
    */
@@ -82,6 +86,8 @@ class Finding extends \Google\Collection
   protected $kubernetesDataType = '';
   protected $loadBalancersType = LoadBalancer::class;
   protected $loadBalancersDataType = 'array';
+  protected $logEntriesType = LogEntry::class;
+  protected $logEntriesDataType = 'array';
   protected $mitreAttackType = MitreAttack::class;
   protected $mitreAttackDataType = '';
   /**
@@ -108,6 +114,8 @@ class Finding extends \Google\Collection
    * @var string
    */
   public $nextSteps;
+  protected $orgPoliciesType = OrgPolicy::class;
+  protected $orgPoliciesDataType = 'array';
   /**
    * @var string
    */
@@ -156,6 +164,20 @@ class Finding extends \Google\Collection
     return $this->access;
   }
   /**
+   * @param Application
+   */
+  public function setApplication(Application $application)
+  {
+    $this->application = $application;
+  }
+  /**
+   * @return Application
+   */
+  public function getApplication()
+  {
+    return $this->application;
+  }
+  /**
    * @param AttackExposure
    */
   public function setAttackExposure(AttackExposure $attackExposure)
@@ -168,6 +190,20 @@ class Finding extends \Google\Collection
   public function getAttackExposure()
   {
     return $this->attackExposure;
+  }
+  /**
+   * @param BackupDisasterRecovery
+   */
+  public function setBackupDisasterRecovery(BackupDisasterRecovery $backupDisasterRecovery)
+  {
+    $this->backupDisasterRecovery = $backupDisasterRecovery;
+  }
+  /**
+   * @return BackupDisasterRecovery
+   */
+  public function getBackupDisasterRecovery()
+  {
+    return $this->backupDisasterRecovery;
   }
   /**
    * @param string
@@ -478,6 +514,20 @@ class Finding extends \Google\Collection
     return $this->loadBalancers;
   }
   /**
+   * @param LogEntry[]
+   */
+  public function setLogEntries($logEntries)
+  {
+    $this->logEntries = $logEntries;
+  }
+  /**
+   * @return LogEntry[]
+   */
+  public function getLogEntries()
+  {
+    return $this->logEntries;
+  }
+  /**
    * @param MitreAttack
    */
   public function setMitreAttack(MitreAttack $mitreAttack)
@@ -574,6 +624,20 @@ class Finding extends \Google\Collection
   public function getNextSteps()
   {
     return $this->nextSteps;
+  }
+  /**
+   * @param OrgPolicy[]
+   */
+  public function setOrgPolicies($orgPolicies)
+  {
+    $this->orgPolicies = $orgPolicies;
+  }
+  /**
+   * @return OrgPolicy[]
+   */
+  public function getOrgPolicies()
+  {
+    return $this->orgPolicies;
   }
   /**
    * @param string

@@ -22,6 +22,8 @@ class GoogleCloudDialogflowCxV3Agent extends \Google\Collection
   protected $collection_key = 'supportedLanguageCodes';
   protected $advancedSettingsType = GoogleCloudDialogflowCxV3AdvancedSettings::class;
   protected $advancedSettingsDataType = '';
+  protected $answerFeedbackSettingsType = GoogleCloudDialogflowCxV3AgentAnswerFeedbackSettings::class;
+  protected $answerFeedbackSettingsDataType = '';
   /**
    * @var string
    */
@@ -58,6 +60,8 @@ class GoogleCloudDialogflowCxV3Agent extends \Google\Collection
    * @var string
    */
   public $name;
+  protected $personalizationSettingsType = GoogleCloudDialogflowCxV3AgentPersonalizationSettings::class;
+  protected $personalizationSettingsDataType = '';
   /**
    * @var string
    */
@@ -92,6 +96,20 @@ class GoogleCloudDialogflowCxV3Agent extends \Google\Collection
   public function getAdvancedSettings()
   {
     return $this->advancedSettings;
+  }
+  /**
+   * @param GoogleCloudDialogflowCxV3AgentAnswerFeedbackSettings
+   */
+  public function setAnswerFeedbackSettings(GoogleCloudDialogflowCxV3AgentAnswerFeedbackSettings $answerFeedbackSettings)
+  {
+    $this->answerFeedbackSettings = $answerFeedbackSettings;
+  }
+  /**
+   * @return GoogleCloudDialogflowCxV3AgentAnswerFeedbackSettings
+   */
+  public function getAnswerFeedbackSettings()
+  {
+    return $this->answerFeedbackSettings;
   }
   /**
    * @param string
@@ -232,6 +250,20 @@ class GoogleCloudDialogflowCxV3Agent extends \Google\Collection
   public function getName()
   {
     return $this->name;
+  }
+  /**
+   * @param GoogleCloudDialogflowCxV3AgentPersonalizationSettings
+   */
+  public function setPersonalizationSettings(GoogleCloudDialogflowCxV3AgentPersonalizationSettings $personalizationSettings)
+  {
+    $this->personalizationSettings = $personalizationSettings;
+  }
+  /**
+   * @return GoogleCloudDialogflowCxV3AgentPersonalizationSettings
+   */
+  public function getPersonalizationSettings()
+  {
+    return $this->personalizationSettings;
   }
   /**
    * @param string

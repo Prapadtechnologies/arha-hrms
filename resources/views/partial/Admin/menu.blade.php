@@ -157,7 +157,7 @@
                     <li class="dash-item {{ Request::segment(1) == 'employee' ? 'active' : '' }}">
                         <a href="{{ route('employee.show', \Illuminate\Support\Facades\Crypt::encrypt($employee->id)) }}"
                             class="dash-link"><span class="dash-micon"><i class="ti ti-user"></i></span><span
-                                class="dash-mtext">{{ __('Employees') }}</span></a>
+                                class="dash-mtext">{{ __('My Profile') }}</span></a>
                     </li>
                 @else
                     <li class="dash-item {{ Request::segment(1) == 'employee' ? 'active' : '' }}">
@@ -202,13 +202,15 @@
             <!-- payroll-->
 
             @if (Gate::check('Manage Employee'))
-                <li
-                    class="dash-item dash-hasmenu {{ Request::segment(1) == 'setsalary' ? 'dash-trigger active' : '' }}">
-                    <a href="#!" class="dash-link"><span class="dash-micon"><i
-                                class="ti ti-receipt"></i></span><span
-                            class="dash-mtext">{{ __('Payroll') }}</span><span class="dash-arrow"><i
-                                data-feather="chevron-right"></i></span></a>
-                </li>
+                @if (\Auth::user()->type == 'hr')
+                    <li
+                        class="dash-item dash-hasmenu {{ Request::segment(1) == 'setsalary' ? 'dash-trigger active' : '' }}">
+                        <a href="#!" class="dash-link"><span class="dash-micon"><i
+                                    class="ti ti-receipt"></i></span><span
+                                class="dash-mtext">{{ __('Payroll') }}</span><span class="dash-arrow"><i
+                                    data-feather="chevron-right"></i></span></a>
+                    </li>
+                @endif
             @endif
 
             <!-- timesheet-->
@@ -258,11 +260,13 @@
 
             <!-- employee-->
             @if (Gate::check('Manage Employee'))
-                <li class="dash-item {{ Request::segment(1) == 'employee' ? 'active' : '' }}">
-                    <a href="{{ route('employee.index') }}" class="dash-link"><span class="dash-micon"><i
-                                    class="ti ti-user"></i></span><span
-                                class="dash-mtext">{{ __('HR Letter') }}</span></a>
-                </li>
+                @if (\Auth::user()->type == 'hr')
+                    <li class="dash-item {{ Request::segment(1) == 'employee' ? 'active' : '' }}">
+                        <a href="{{ route('employee.index') }}" class="dash-link"><span class="dash-micon"><i
+                                        class="ti ti-user"></i></span><span
+                                    class="dash-mtext">{{ __('HR Letter') }}</span></a>
+                    </li>
+                @endif
             @endif
             <!-- employee-->
             
@@ -583,11 +587,13 @@
 
             <!-- document-->
             @if (Gate::check('Manage Document'))
-                <li class="dash-item">
-                    <a href="{{ route('document-upload.index') }}" class="dash-link"><span
-                            class="dash-micon"><i class="ti ti-file"></i></span><span
-                            class="dash-mtext">{{ __('Document') }}</span></a>
-                </li>
+                @if (\Auth::user()->type == 'hr')
+                    <li class="dash-item">
+                        <a href="{{ route('document-upload.index') }}" class="dash-link"><span
+                                class="dash-micon"><i class="ti ti-file"></i></span><span
+                                class="dash-mtext">{{ __('Document') }}</span></a>
+                    </li>
+                @endif
             @endcan
 
             <!--company policy-->
@@ -602,7 +608,7 @@
                 </li>
             @endcan
             <!--chats-->
-            @if (\Auth::user()->type != 'super admin')
+            @if (\Auth::user()->type == 'admin' || \Auth::user()->type == 'hr')
                 <li class="dash-item {{ Request::segment(1) == 'chats' ? 'active' : '' }}">
                     <a href="{{ url('chats') }}" class="dash-link"><span class="dash-micon"><i
                                 class="ti ti-messages"></i></span><span

@@ -66,6 +66,8 @@ class DatabaseInstance extends \Google\Collection
    * @var string
    */
   public $gceZone;
+  protected $geminiConfigType = GeminiInstanceConfig::class;
+  protected $geminiConfigDataType = '';
   /**
    * @var string
    */
@@ -122,6 +124,8 @@ class DatabaseInstance extends \Google\Collection
    * @var string[]
    */
   public $replicaNames;
+  protected $replicationClusterType = ReplicationCluster::class;
+  protected $replicationClusterDataType = '';
   /**
    * @var string
    */
@@ -148,6 +152,10 @@ class DatabaseInstance extends \Google\Collection
   public $serviceAccountEmailAddress;
   protected $settingsType = Settings::class;
   protected $settingsDataType = '';
+  /**
+   * @var string
+   */
+  public $sqlNetworkArchitecture;
   /**
    * @var string
    */
@@ -342,6 +350,20 @@ class DatabaseInstance extends \Google\Collection
   public function getGceZone()
   {
     return $this->gceZone;
+  }
+  /**
+   * @param GeminiInstanceConfig
+   */
+  public function setGeminiConfig(GeminiInstanceConfig $geminiConfig)
+  {
+    $this->geminiConfig = $geminiConfig;
+  }
+  /**
+   * @return GeminiInstanceConfig
+   */
+  public function getGeminiConfig()
+  {
+    return $this->geminiConfig;
   }
   /**
    * @param string
@@ -568,6 +590,20 @@ class DatabaseInstance extends \Google\Collection
     return $this->replicaNames;
   }
   /**
+   * @param ReplicationCluster
+   */
+  public function setReplicationCluster(ReplicationCluster $replicationCluster)
+  {
+    $this->replicationCluster = $replicationCluster;
+  }
+  /**
+   * @return ReplicationCluster
+   */
+  public function getReplicationCluster()
+  {
+    return $this->replicationCluster;
+  }
+  /**
    * @param string
    */
   public function setRootPassword($rootPassword)
@@ -678,6 +714,20 @@ class DatabaseInstance extends \Google\Collection
   public function getSettings()
   {
     return $this->settings;
+  }
+  /**
+   * @param string
+   */
+  public function setSqlNetworkArchitecture($sqlNetworkArchitecture)
+  {
+    $this->sqlNetworkArchitecture = $sqlNetworkArchitecture;
+  }
+  /**
+   * @return string
+   */
+  public function getSqlNetworkArchitecture()
+  {
+    return $this->sqlNetworkArchitecture;
   }
   /**
    * @param string

@@ -46,6 +46,7 @@ class ProjectsLocationsDataStoresConversations extends \Google\Service\Resource
    * @param GoogleCloudDiscoveryengineV1betaConverseConversationRequest $postBody
    * @param array $optParams Optional parameters.
    * @return GoogleCloudDiscoveryengineV1betaConverseConversationResponse
+   * @throws \Google\Service\Exception
    */
   public function converse($name, GoogleCloudDiscoveryengineV1betaConverseConversationRequest $postBody, $optParams = [])
   {
@@ -63,6 +64,7 @@ class ProjectsLocationsDataStoresConversations extends \Google\Service\Resource
    * @param GoogleCloudDiscoveryengineV1betaConversation $postBody
    * @param array $optParams Optional parameters.
    * @return GoogleCloudDiscoveryengineV1betaConversation
+   * @throws \Google\Service\Exception
    */
   public function create($parent, GoogleCloudDiscoveryengineV1betaConversation $postBody, $optParams = [])
   {
@@ -79,6 +81,7 @@ class ProjectsLocationsDataStoresConversations extends \Google\Service\Resource
    * s/{collection}/dataStores/{data_store_id}/conversations/{conversation_id}`
    * @param array $optParams Optional parameters.
    * @return GoogleProtobufEmpty
+   * @throws \Google\Service\Exception
    */
   public function delete($name, $optParams = [])
   {
@@ -94,6 +97,7 @@ class ProjectsLocationsDataStoresConversations extends \Google\Service\Resource
    * ction}/dataStores/{data_store_id}/conversations/{conversation_id}`
    * @param array $optParams Optional parameters.
    * @return GoogleCloudDiscoveryengineV1betaConversation
+   * @throws \Google\Service\Exception
    */
   public function get($name, $optParams = [])
   {
@@ -121,6 +125,7 @@ class ProjectsLocationsDataStoresConversations extends \Google\Service\Resource
    * @opt_param string pageToken A page token, received from a previous
    * `ListConversations` call. Provide this to retrieve the subsequent page.
    * @return GoogleCloudDiscoveryengineV1betaListConversationsResponse
+   * @throws \Google\Service\Exception
    */
   public function listProjectsLocationsDataStoresConversations($parent, $optParams = [])
   {
@@ -135,13 +140,15 @@ class ProjectsLocationsDataStoresConversations extends \Google\Service\Resource
    *
    * @param string $name Immutable. Fully qualified name
    * `project/locations/global/collections/{collection}/dataStore/conversations`
+   * or `project/locations/global/collections/{collection}/engines/conversations`.
    * @param GoogleCloudDiscoveryengineV1betaConversation $postBody
    * @param array $optParams Optional parameters.
    *
    * @opt_param string updateMask Indicates which fields in the provided
-   * Conversation to update. The following are NOT supported: * conversation.name
+   * Conversation to update. The following are NOT supported: * Conversation.name
    * If not set or empty, all supported fields are updated.
    * @return GoogleCloudDiscoveryengineV1betaConversation
+   * @throws \Google\Service\Exception
    */
   public function patch($name, GoogleCloudDiscoveryengineV1betaConversation $postBody, $optParams = [])
   {

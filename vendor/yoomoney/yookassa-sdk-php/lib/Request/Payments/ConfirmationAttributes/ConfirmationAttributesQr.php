@@ -1,9 +1,9 @@
 <?php
 
-/**
- * The MIT License.
+/*
+ * The MIT License
  *
- * Copyright (c) 2023 "YooMoney", NBСO LLC
+ * Copyright (c) 2024 "YooMoney", NBСO LLC
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -42,12 +42,40 @@ use YooKassa\Validator\Constraints as Assert;
  *
  * @property string $type Код сценария подтверждения
  * @property string $locale Язык интерфейса, писем и смс, которые будет видеть или получать пользователь
+ * @property string|null $return_url URL или диплинк, на который вернется пользователь после подтверждения или отмены платежа в приложении.
+ * @property string|null $returnUrl URL или диплинк, на который вернется пользователь после подтверждения или отмены платежа в приложении.
  */
 class ConfirmationAttributesQr extends AbstractConfirmationAttributes
 {
+    /**
+     * @var string|null URL или диплинк, на который вернется пользователь после подтверждения или отмены платежа в приложении. Если платеж делали из мобильной версии сайта, передайте URL, если из мобильного приложения — диплинк.
+     */
+    #[Assert\Type('string')]
+    #[Assert\Length(max: 1024)]
+    private ?string $_return_url = null;
+
     public function __construct(?array $data = [])
     {
         parent::__construct($data);
         $this->setType(ConfirmationType::QR);
+    }
+
+    /**
+     * @return string|null URL или диплинк, на который вернется пользователь после подтверждения или отмены платежа в приложении
+     */
+    public function getReturnUrl(): ?string
+    {
+        return $this->_return_url;
+    }
+
+    /**
+     * @param string|null $return_url URL или диплинк, на который вернется пользователь после подтверждения или отмены платежа в приложении
+     *
+     * @return self
+     */
+    public function setReturnUrl(?string $return_url = null): self
+    {
+        $this->_return_url = $this->validatePropertyValue('_return_url', $return_url);
+        return $this;
     }
 }

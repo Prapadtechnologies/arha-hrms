@@ -50,9 +50,9 @@ class V1 extends \Google\Service\Resource
    * be an organization number (such as "organizations/123"), a folder number
    * (such as "folders/123"), a project ID (such as "projects/my-project-id"), or
    * a project number (such as "projects/12345"). To know how to get organization
-   * id, visit [here ](https://cloud.google.com/resource-manager/docs/creating-
+   * ID, visit [here ](https://cloud.google.com/resource-manager/docs/creating-
    * managing-organization#retrieving_your_organization_id). To know how to get
-   * folder or project id, visit [here ](https://cloud.google.com/resource-
+   * folder or project ID, visit [here ](https://cloud.google.com/resource-
    * manager/docs/creating-managing-
    * folders#viewing_or_listing_folders_and_projects).
    * @param array $optParams Optional parameters.
@@ -151,13 +151,14 @@ class V1 extends \Google\Service\Resource
    * organizations/organization_number/savedQueries/saved_query_id If both
    * `analysis_query` and `saved_analysis_query` are provided, they will be merged
    * together with the `saved_analysis_query` as base and the `analysis_query` as
-   * overrides. For more details of the merge behavior, please refer to the
+   * overrides. For more details of the merge behavior, refer to the
    * [MergeFrom](https://developers.google.com/protocol-
    * buffers/docs/reference/cpp/google.protobuf.message#Message.MergeFrom.details)
    * page. Note that you cannot override primitive fields with default value, such
    * as 0 or empty string, etc., because we use proto3, which doesn't support
    * field presence yet.
    * @return AnalyzeIamPolicyResponse
+   * @throws \Google\Service\Exception
    */
   public function analyzeIamPolicy($scope, $optParams = [])
   {
@@ -180,14 +181,15 @@ class V1 extends \Google\Service\Resource
    * be an organization number (such as "organizations/123"), a folder number
    * (such as "folders/123"), a project ID (such as "projects/my-project-id"), or
    * a project number (such as "projects/12345"). To know how to get organization
-   * id, visit [here ](https://cloud.google.com/resource-manager/docs/creating-
+   * ID, visit [here ](https://cloud.google.com/resource-manager/docs/creating-
    * managing-organization#retrieving_your_organization_id). To know how to get
-   * folder or project id, visit [here ](https://cloud.google.com/resource-
+   * folder or project ID, visit [here ](https://cloud.google.com/resource-
    * manager/docs/creating-managing-
    * folders#viewing_or_listing_folders_and_projects).
    * @param AnalyzeIamPolicyLongrunningRequest $postBody
    * @param array $optParams Optional parameters.
    * @return Operation
+   * @throws \Google\Service\Exception
    */
   public function analyzeIamPolicyLongrunning($scope, AnalyzeIamPolicyLongrunningRequest $postBody, $optParams = [])
   {
@@ -216,6 +218,7 @@ class V1 extends \Google\Service\Resource
    * @opt_param string view Analysis view indicating what information should be
    * included in the analysis response. If unspecified, the default view is FULL.
    * @return AnalyzeMoveResponse
+   * @throws \Google\Service\Exception
    */
   public function analyzeMove($resource, $optParams = [])
   {
@@ -247,6 +250,7 @@ class V1 extends \Google\Service\Resource
    * items with a maximum of 200.
    * @opt_param string pageToken The pagination token to retrieve the next page.
    * @return AnalyzeOrgPoliciesResponse
+   * @throws \Google\Service\Exception
    */
   public function analyzeOrgPolicies($scope, $optParams = [])
   {
@@ -257,15 +261,46 @@ class V1 extends \Google\Service\Resource
   /**
    * Analyzes organization policies governed assets (Google Cloud resources or
    * policies) under a scope. This RPC supports custom constraints and the
-   * following 10 canned constraints: * storage.uniformBucketLevelAccess *
-   * iam.disableServiceAccountKeyCreation * iam.allowedPolicyMemberDomains *
-   * compute.vmExternalIpAccess * appengine.enforceServiceAccountActAsCheck *
-   * gcp.resourceLocations * compute.trustedImageProjects *
-   * compute.skipDefaultNetworkCreation * compute.requireOsLogin *
-   * compute.disableNestedVirtualization This RPC only returns either resources of
-   * types supported by [searchable asset types](https://cloud.google.com/asset-
-   * inventory/docs/supported-asset-types#searchable_asset_types), or IAM
-   * policies. (v1.analyzeOrgPolicyGovernedAssets)
+   * following canned constraints: * constraints/ainotebooks.accessMode *
+   * constraints/ainotebooks.disableFileDownloads *
+   * constraints/ainotebooks.disableRootAccess *
+   * constraints/ainotebooks.disableTerminal *
+   * constraints/ainotebooks.environmentOptions *
+   * constraints/ainotebooks.requireAutoUpgradeSchedule *
+   * constraints/ainotebooks.restrictVpcNetworks *
+   * constraints/compute.disableGuestAttributesAccess *
+   * constraints/compute.disableInstanceDataAccessApis *
+   * constraints/compute.disableNestedVirtualization *
+   * constraints/compute.disableSerialPortAccess *
+   * constraints/compute.disableSerialPortLogging *
+   * constraints/compute.disableVpcExternalIpv6 *
+   * constraints/compute.requireOsLogin * constraints/compute.requireShieldedVm *
+   * constraints/compute.restrictLoadBalancerCreationForTypes *
+   * constraints/compute.restrictProtocolForwardingCreationForTypes *
+   * constraints/compute.restrictXpnProjectLienRemoval *
+   * constraints/compute.setNewProjectDefaultToZonalDNSOnly *
+   * constraints/compute.skipDefaultNetworkCreation *
+   * constraints/compute.trustedImageProjects * constraints/compute.vmCanIpForward
+   * * constraints/compute.vmExternalIpAccess *
+   * constraints/gcp.detailedAuditLoggingMode * constraints/gcp.resourceLocations
+   * * constraints/iam.allowedPolicyMemberDomains *
+   * constraints/iam.automaticIamGrantsForDefaultServiceAccounts *
+   * constraints/iam.disableServiceAccountCreation *
+   * constraints/iam.disableServiceAccountKeyCreation *
+   * constraints/iam.disableServiceAccountKeyUpload *
+   * constraints/iam.restrictCrossProjectServiceAccountLienRemoval *
+   * constraints/iam.serviceAccountKeyExpiryHours *
+   * constraints/resourcemanager.accessBoundaries *
+   * constraints/resourcemanager.allowedExportDestinations *
+   * constraints/sql.restrictAuthorizedNetworks *
+   * constraints/sql.restrictNoncompliantDiagnosticDataAccess *
+   * constraints/sql.restrictNoncompliantResourceCreation *
+   * constraints/sql.restrictPublicIp * constraints/storage.publicAccessPrevention
+   * * constraints/storage.restrictAuthTypes *
+   * constraints/storage.uniformBucketLevelAccess This RPC only returns either
+   * resources of types [supported by search APIs](https://cloud.google.com/asset-
+   * inventory/docs/supported-asset-types) or IAM policies.
+   * (v1.analyzeOrgPolicyGovernedAssets)
    *
    * @param string $scope Required. The organization to scope the request. Only
    * organization policies within the scope will be analyzed. The output assets
@@ -301,6 +336,7 @@ class V1 extends \Google\Service\Resource
    * contain 100 items with a maximum of 200.
    * @opt_param string pageToken The pagination token to retrieve the next page.
    * @return AnalyzeOrgPolicyGovernedAssetsResponse
+   * @throws \Google\Service\Exception
    */
   public function analyzeOrgPolicyGovernedAssets($scope, $optParams = [])
   {
@@ -334,6 +370,7 @@ class V1 extends \Google\Service\Resource
    * will contain 100 items with a maximum of 200.
    * @opt_param string pageToken The pagination token to retrieve the next page.
    * @return AnalyzeOrgPolicyGovernedContainersResponse
+   * @throws \Google\Service\Exception
    */
   public function analyzeOrgPolicyGovernedContainers($scope, $optParams = [])
   {
@@ -378,6 +415,7 @@ class V1 extends \Google\Service\Resource
    * inventory/docs/overview) for all supported asset types and relationship
    * types.
    * @return BatchGetAssetsHistoryResponse
+   * @throws \Google\Service\Exception
    */
   public function batchGetAssetsHistory($parent, $optParams = [])
   {
@@ -404,6 +442,7 @@ class V1 extends \Google\Service\Resource
    * @param ExportAssetsRequest $postBody
    * @param array $optParams Optional parameters.
    * @return Operation
+   * @throws \Google\Service\Exception
    */
   public function exportAssets($parent, ExportAssetsRequest $postBody, $optParams = [])
   {
@@ -431,6 +470,7 @@ class V1 extends \Google\Service\Resource
    * @param QueryAssetsRequest $postBody
    * @param array $optParams Optional parameters.
    * @return QueryAssetsResponse
+   * @throws \Google\Service\Exception
    */
   public function queryAssets($parent, QueryAssetsRequest $postBody, $optParams = [])
   {
@@ -457,13 +497,13 @@ class V1 extends \Google\Service\Resource
    *
    * @opt_param string assetTypes Optional. A list of asset types that the IAM
    * policies are attached to. If empty, it will search the IAM policies that are
-   * attached to all the [searchable asset types](https://cloud.google.com/asset-
-   * inventory/docs/supported-asset-types#searchable_asset_types). Regular
-   * expressions are also supported. For example: * "compute.googleapis.com.*"
-   * snapshots IAM policies attached to asset type starts with
-   * "compute.googleapis.com". * ".*Instance" snapshots IAM policies attached to
-   * asset type ends with "Instance". * ".*Instance.*" snapshots IAM policies
-   * attached to asset type contains "Instance". See
+   * attached to all the asset types [supported by search
+   * APIs](https://cloud.google.com/asset-inventory/docs/supported-asset-types)
+   * Regular expressions are also supported. For example: *
+   * "compute.googleapis.com.*" snapshots IAM policies attached to asset type
+   * starts with "compute.googleapis.com". * ".*Instance" snapshots IAM policies
+   * attached to asset type ends with "Instance". * ".*Instance.*" snapshots IAM
+   * policies attached to asset type contains "Instance". See
    * [RE2](https://github.com/google/re2/wiki/Syntax) for all supported regular
    * expression syntax. If the regular expression does not match any supported
    * asset type, an INVALID_ARGUMENT error will be returned.
@@ -516,6 +556,7 @@ class V1 extends \Google\Service\Resource
    * the Compute Admin role. * `memberTypes:user` to find IAM policy bindings that
    * contain the principal type "user".
    * @return SearchAllIamPoliciesResponse
+   * @throws \Google\Service\Exception
    */
   public function searchAllIamPolicies($scope, $optParams = [])
   {
@@ -541,16 +582,15 @@ class V1 extends \Google\Service\Resource
    * @param array $optParams Optional parameters.
    *
    * @opt_param string assetTypes Optional. A list of asset types that this
-   * request searches for. If empty, it will search all the [searchable asset
-   * types](https://cloud.google.com/asset-inventory/docs/supported-asset-
-   * types#searchable_asset_types). Regular expressions are also supported. For
-   * example: * "compute.googleapis.com.*" snapshots resources whose asset type
-   * starts with "compute.googleapis.com". * ".*Instance" snapshots resources
-   * whose asset type ends with "Instance". * ".*Instance.*" snapshots resources
-   * whose asset type contains "Instance". See
-   * [RE2](https://github.com/google/re2/wiki/Syntax) for all supported regular
-   * expression syntax. If the regular expression does not match any supported
-   * asset type, an INVALID_ARGUMENT error will be returned.
+   * request searches for. If empty, it will search all the asset types [supported
+   * by search APIs](https://cloud.google.com/asset-inventory/docs/supported-
+   * asset-types). Regular expressions are also supported. For example: *
+   * "compute.googleapis.com.*" snapshots resources whose asset type starts with
+   * "compute.googleapis.com". * ".*Instance" snapshots resources whose asset type
+   * ends with "Instance". * ".*Instance.*" snapshots resources whose asset type
+   * contains "Instance". See [RE2](https://github.com/google/re2/wiki/Syntax) for
+   * all supported regular expression syntax. If the regular expression does not
+   * match any supported asset type, an INVALID_ARGUMENT error will be returned.
    * @opt_param string orderBy Optional. A comma-separated list of fields
    * specifying the sorting order of the results. The default order is ascending.
    * Add " DESC" after the field name to indicate descending order. Redundant
@@ -582,31 +622,30 @@ class V1 extends \Google\Service\Resource
    * its value is `prod`. * `labels.env:*` to find Google Cloud resources that
    * have a label `env`. * `tagKeys:env` to find Google Cloud resources that have
    * directly attached tags where the
-   * [`TagKey`](https://cloud.google.com/resource-
-   * manager/reference/rest/v3/tagKeys#resource:-tagkey) .`namespacedName`
-   * contains `env`. * `tagValues:prod*` to find Google Cloud resources that have
-   * directly attached tags where the
-   * [`TagValue`](https://cloud.google.com/resource-
-   * manager/reference/rest/v3/tagValues#resource:-tagvalue) .`namespacedName`
-   * contains a word prefixed by `prod`. * `tagValueIds=tagValues/123` to find
-   * Google Cloud resources that have directly attached tags where the
-   * [`TagValue`](https://cloud.google.com/resource-
-   * manager/reference/rest/v3/tagValues#resource:-tagvalue) .`name` is exactly
+   * [`TagKey.namespacedName`](https://cloud.google.com/resource-
+   * manager/reference/rest/v3/tagKeys#resource:-tagkey) contains `env`. *
+   * `tagValues:prod*` to find Google Cloud resources that have directly attached
+   * tags where the [`TagValue.namespacedName`](https://cloud.google.com/resource-
+   * manager/reference/rest/v3/tagValues#resource:-tagvalue) contains a word
+   * prefixed by `prod`. * `tagValueIds=tagValues/123` to find Google Cloud
+   * resources that have directly attached tags where the
+   * [`TagValue.name`](https://cloud.google.com/resource-
+   * manager/reference/rest/v3/tagValues#resource:-tagvalue) is exactly
    * `tagValues/123`. * `effectiveTagKeys:env` to find Google Cloud resources that
    * have directly attached or inherited tags where the
-   * [`TagKey`](https://cloud.google.com/resource-
-   * manager/reference/rest/v3/tagKeys#resource:-tagkey) .`namespacedName`
-   * contains `env`. * `effectiveTagValues:prod*` to find Google Cloud resources
-   * that have directly attached or inherited tags where the
-   * [`TagValue`](https://cloud.google.com/resource-
-   * manager/reference/rest/v3/tagValues#resource:-tagvalue) .`namespacedName`
-   * contains a word prefixed by `prod`. * `effectiveTagValueIds=tagValues/123` to
-   * find Google Cloud resources that have directly attached or inherited tags
-   * where the [`TagValue`](https://cloud.google.com/resource-
-   * manager/reference/rest/v3/tagValues#resource:-tagvalue) .`name` is exactly
+   * [`TagKey.namespacedName`](https://cloud.google.com/resource-
+   * manager/reference/rest/v3/tagKeys#resource:-tagkey) contains `env`. *
+   * `effectiveTagValues:prod*` to find Google Cloud resources that have directly
+   * attached or inherited tags where the
+   * [`TagValue.namespacedName`](https://cloud.google.com/resource-
+   * manager/reference/rest/v3/tagValues#resource:-tagvalue) contains a word
+   * prefixed by `prod`. * `effectiveTagValueIds=tagValues/123` to find Google
+   * Cloud resources that have directly attached or inherited tags where the
+   * [`TagValue.name`](https://cloud.google.com/resource-
+   * manager/reference/rest/v3/tagValues#resource:-tagvalue) is exactly
    * `tagValues/123`. * `kmsKey:key` to find Google Cloud resources encrypted with
    * a customer-managed encryption key whose name contains `key` as a word. This
-   * field is deprecated. Please use the `kmsKeys` field to retrieve Cloud KMS key
+   * field is deprecated. Use the `kmsKeys` field to retrieve Cloud KMS key
    * information. * `kmsKeys:key` to find Google Cloud resources encrypted with
    * customer-managed encryption keys whose name contains the word `key`. *
    * `relationships:instance-group-1` to find Google Cloud resources that have
@@ -618,7 +657,7 @@ class V1 extends \Google\Service\Resource
    * Compute Engine instance group resource name, for relationship type
    * `INSTANCE_TO_INSTANCEGROUP`. * `sccSecurityMarks.key=value` to find Cloud
    * resources that are attached with security marks whose key is `key` and value
-   * is `value'. * `sccSecurityMarks.key:*` to find Cloud resources that are
+   * is `value`. * `sccSecurityMarks.key:*` to find Cloud resources that are
    * attached with security marks whose key is `key`. * `state:ACTIVE` to find
    * Google Cloud resources whose state contains `ACTIVE` as a word. * `NOT
    * state:ACTIVE` to find Google Cloud resources whose state doesn't contain
@@ -649,6 +688,7 @@ class V1 extends \Google\Service\Resource
    * `"name,location"`, `"name,versionedResources"`, `"*"`. Any invalid field path
    * will trigger INVALID_ARGUMENT error.
    * @return SearchAllResourcesResponse
+   * @throws \Google\Service\Exception
    */
   public function searchAllResources($scope, $optParams = [])
   {

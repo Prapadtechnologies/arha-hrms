@@ -47,7 +47,15 @@ class ClusterUpdate extends \Google\Collection
   /**
    * @var bool
    */
+  public $desiredEnableCiliumClusterwideNetworkPolicy;
+  /**
+   * @var bool
+   */
   public $desiredEnableFqdnNetworkPolicy;
+  /**
+   * @var bool
+   */
+  public $desiredEnableMultiNetworking;
   /**
    * @var bool
    */
@@ -64,6 +72,10 @@ class ClusterUpdate extends \Google\Collection
    * @var string
    */
   public $desiredImageType;
+  /**
+   * @var string
+   */
+  public $desiredInTransitEncryptionConfig;
   protected $desiredIntraNodeVisibilityConfigType = IntraNodeVisibilityConfig::class;
   protected $desiredIntraNodeVisibilityConfigDataType = '';
   protected $desiredK8sBetaApisType = K8sBetaAPIConfig::class;
@@ -98,6 +110,8 @@ class ClusterUpdate extends \Google\Collection
   protected $desiredNetworkPerformanceConfigDataType = '';
   protected $desiredNodePoolAutoConfigNetworkTagsType = NetworkTags::class;
   protected $desiredNodePoolAutoConfigNetworkTagsDataType = '';
+  protected $desiredNodePoolAutoConfigResourceManagerTagsType = ResourceManagerTags::class;
+  protected $desiredNodePoolAutoConfigResourceManagerTagsDataType = '';
   protected $desiredNodePoolAutoscalingType = NodePoolAutoscaling::class;
   protected $desiredNodePoolAutoscalingDataType = '';
   /**
@@ -304,6 +318,20 @@ class ClusterUpdate extends \Google\Collection
   /**
    * @param bool
    */
+  public function setDesiredEnableCiliumClusterwideNetworkPolicy($desiredEnableCiliumClusterwideNetworkPolicy)
+  {
+    $this->desiredEnableCiliumClusterwideNetworkPolicy = $desiredEnableCiliumClusterwideNetworkPolicy;
+  }
+  /**
+   * @return bool
+   */
+  public function getDesiredEnableCiliumClusterwideNetworkPolicy()
+  {
+    return $this->desiredEnableCiliumClusterwideNetworkPolicy;
+  }
+  /**
+   * @param bool
+   */
   public function setDesiredEnableFqdnNetworkPolicy($desiredEnableFqdnNetworkPolicy)
   {
     $this->desiredEnableFqdnNetworkPolicy = $desiredEnableFqdnNetworkPolicy;
@@ -314,6 +342,20 @@ class ClusterUpdate extends \Google\Collection
   public function getDesiredEnableFqdnNetworkPolicy()
   {
     return $this->desiredEnableFqdnNetworkPolicy;
+  }
+  /**
+   * @param bool
+   */
+  public function setDesiredEnableMultiNetworking($desiredEnableMultiNetworking)
+  {
+    $this->desiredEnableMultiNetworking = $desiredEnableMultiNetworking;
+  }
+  /**
+   * @return bool
+   */
+  public function getDesiredEnableMultiNetworking()
+  {
+    return $this->desiredEnableMultiNetworking;
   }
   /**
    * @param bool
@@ -398,6 +440,20 @@ class ClusterUpdate extends \Google\Collection
   public function getDesiredImageType()
   {
     return $this->desiredImageType;
+  }
+  /**
+   * @param string
+   */
+  public function setDesiredInTransitEncryptionConfig($desiredInTransitEncryptionConfig)
+  {
+    $this->desiredInTransitEncryptionConfig = $desiredInTransitEncryptionConfig;
+  }
+  /**
+   * @return string
+   */
+  public function getDesiredInTransitEncryptionConfig()
+  {
+    return $this->desiredInTransitEncryptionConfig;
   }
   /**
    * @param IntraNodeVisibilityConfig
@@ -580,6 +636,20 @@ class ClusterUpdate extends \Google\Collection
   public function getDesiredNodePoolAutoConfigNetworkTags()
   {
     return $this->desiredNodePoolAutoConfigNetworkTags;
+  }
+  /**
+   * @param ResourceManagerTags
+   */
+  public function setDesiredNodePoolAutoConfigResourceManagerTags(ResourceManagerTags $desiredNodePoolAutoConfigResourceManagerTags)
+  {
+    $this->desiredNodePoolAutoConfigResourceManagerTags = $desiredNodePoolAutoConfigResourceManagerTags;
+  }
+  /**
+   * @return ResourceManagerTags
+   */
+  public function getDesiredNodePoolAutoConfigResourceManagerTags()
+  {
+    return $this->desiredNodePoolAutoConfigResourceManagerTags;
   }
   /**
    * @param NodePoolAutoscaling
