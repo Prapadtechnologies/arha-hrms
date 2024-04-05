@@ -183,9 +183,11 @@
                         </span>
                     </a>
                     <ul class="dash-submenu ">
+                        <?php if(\Auth::user()->type == 'company' || \Auth::user()->type == 'super admin'): ?>
                         <li class="dash-item <?php echo e(Request::segment(1) == 'setsalary' ? 'active' : '-'); ?>">
-                            <a class="dash-link" href="<?php echo e(route('setsalary.index')); ?>"><?php echo e(__('Salary Breakup')); ?></a>
+                            <a class="dash-link" href="<?php echo e(route('salarybreakup')); ?>"><?php echo e(__('Salary Breakup')); ?></a>
                         </li>
+                        <?php endif; ?>                        
                         <li class="dash-item <?php echo e(Request::segment(1) == 'setsalary' ? 'active' : '-'); ?>">
                             <a class="dash-link" href="<?php echo e(route('setsalary.index')); ?>"><?php echo e(__('Salary Computation')); ?></a>
                         </li>

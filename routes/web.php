@@ -662,6 +662,53 @@ Route::group(['middleware' => ['verified']], function () {
         ]
     );
 
+    Route::get('salary-breakup', [SetSalaryController::class, 'salaryBreakupPage'])->name('salarybreakup')->middleware(
+        [
+            'auth',
+            'XSS',
+        ]
+    );
+
+    Route::get('salary-breakup-create', [SetSalaryController::class, 'createSalaryBreakup'])->name('salarybreakup.create')->middleware(
+        [
+            'auth',
+            'XSS',
+        ]
+    );
+    Route::post('salary-breakup-store', [SetSalaryController::class, 'storeSalaryBreakup'])->name('salarybreakup.store')->middleware(
+        [
+            'auth',
+            'XSS',
+        ]
+    );
+
+    Route::get('salary-breakup-edit/{id}', [SetSalaryController::class, 'editSalaryBreakup'])->name('salarybreakup.edit')->middleware(
+        [
+            'auth',
+            'XSS',
+        ]
+    );
+    Route::post('salary-breakup-update', [SetSalaryController::class, 'updateSalaryBreakup'])->name('salarybreakup.update')->middleware(
+        [
+            'auth',
+            'XSS',
+        ]
+    );
+
+    Route::delete('salary-breakup-delete/{id}', [SetSalaryController::class, 'destroySalaryBreakup'])->name('salarybreakup.delete')->middleware(
+        [
+            'auth',
+            'XSS',
+        ]
+    );
+
+    Route::post('salary-calculate-update', [SetSalaryController::class, 'storeSalaryComputation'])->name('salarycalculate.update')->middleware(
+        [
+            'auth',
+            'XSS',
+        ]
+    );
+
     Route::get('payslip/paysalary/{id}/{date}', [PaySlipController::class, 'paysalary'])->name('payslip.paysalary')->middleware(
         [
             'auth',

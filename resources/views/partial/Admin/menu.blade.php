@@ -186,9 +186,11 @@
                         </span>
                     </a>
                     <ul class="dash-submenu ">
+                        @if (\Auth::user()->type == 'company' || \Auth::user()->type == 'super admin')
                         <li class="dash-item {{ Request::segment(1) == 'setsalary' ? 'active' : '-' }}">
-                            <a class="dash-link" href="{{ route('setsalary.index') }}">{{ __('Salary Breakup') }}</a>
+                            <a class="dash-link" href="{{ route('salarybreakup') }}">{{ __('Salary Breakup') }}</a>
                         </li>
+                        @endif                        
                         <li class="dash-item {{ Request::segment(1) == 'setsalary' ? 'active' : '-' }}">
                             <a class="dash-link" href="{{ route('setsalary.index') }}">{{ __('Salary Computation') }}</a>
                         </li>
