@@ -26,12 +26,12 @@
                                 <th><?php echo e(__('Name')); ?></th>
                                 <th><?php echo e(__('Payroll Type')); ?></th>
                                 <th><?php echo e(__('Salary')); ?></th>
-                                <th><?php echo e(__('Net Salary')); ?></th>
                                 <th width="200px"><?php echo e(__('Action')); ?></th>
                             </tr>
                         </thead>
                         <tbody>
-                            <?php $__currentLoopData = $employees; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $employee): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                           <?php foreach ($employees as $employee){ $base_salary = CustomHelper::getBaseSalaryData($employee->id); ?>
+                                
                                 <tr>
                                     <td>
                                         <a href="<?php echo e(route('setsalary.show', \Illuminate\Support\Facades\Crypt::encrypt($employee->id))); ?>"
@@ -42,10 +42,7 @@
                                     </td>
                                     <td><?php echo e($employee->name); ?></td>
                                     <td><?php echo e(!empty($employee->salary_type()) ? $employee->salary_type() : '-'); ?></td>
-                                    <td><?php echo e(\Auth::user()->priceFormat($employee->salary)); ?></td>
-                                    <td><?php echo e(!empty($employee->get_net_salary()) ? \Auth::user()->priceFormat($employee->get_net_salary()) : '-'); ?>
-
-                                    </td>
+                                    <td><?php echo e(!empty($base_salary) ? CustomHelper::currencyFormat($base_salary)." INR" : ''); ?></td>
                                     <td class="Action">
                                         <span>
                                             <div class="action-btn bg-warning ms-2">
@@ -58,7 +55,7 @@
                                         </span>
                                     </td>
                                 </tr>
-                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                            <?php } ?>
                         </tbody>
                     </table>
                 </div>

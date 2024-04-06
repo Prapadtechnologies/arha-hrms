@@ -13,7 +13,9 @@ class SalaryCalculations extends Model
         'id',
         'created_by',
         'employee_id',
-        'salary_data',
+        'meta_key',
+        'meta_value',
+        'field_type',
         'created_at',
         'updated_at'
     ];

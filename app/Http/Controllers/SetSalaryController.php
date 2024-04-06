@@ -88,6 +88,8 @@ class SetSalaryController extends Controller
         $deduction_options = DeductionOption::where('created_by', \Auth::user()->creatorId())->get()->pluck('name', 'id');
         $salary_breakup = SalaryBreakup::where('created_by', \Auth::user()->creatorId())->get();
         $employeesId      = \Auth::user()->employeeIdFormat($this->employeeNumber());
+
+        $salary_calculations = SalaryCalculations::where(['employee_id' => $id, 'created_by' => \Auth::user()->creatorId()])->orderBy('field_id', 'ASC')->get();
         
         if (\Auth::user()->type == 'employee') {
             $currentEmployee      = Employee::where('user_id', '=', \Auth::user()->id)->first();
@@ -140,7 +142,7 @@ class SetSalaryController extends Controller
             }
 
 
-            return view('setsalary.employee_salary', compact('employee', 'payslip_type', 'allowance_options', 'commissions', 'loan_options', 'overtimes', 'otherpayments', 'saturationdeductions', 'loans', 'deduction_options', 'allowances'));
+            return view('setsalary.employee_salary', compact('employee', 'payslip_type', 'allowance_options', 'commissions', 'loan_options', 'overtimes', 'otherpayments', 'saturationdeductions', 'loans', 'deduction_options', 'allowances', 'salary_calculations'));
         } else {
             $allowances           = Allowance::where('employee_id', $id)->get();
             $commissions          = Commission::where('employee_id', $id)->get();
@@ -190,7 +192,7 @@ class SetSalaryController extends Controller
                 }
             }
 
-            return view('setsalary.employee_salary', compact('employee', 'payslip_type', 'allowance_options', 'commissions', 'loan_options', 'overtimes', 'otherpayments', 'saturationdeductions', 'loans', 'deduction_options', 'allowances', 'salary_breakup', 'employeesId'));
+            return view('setsalary.employee_salary', compact('employee', 'payslip_type', 'allowance_options', 'commissions', 'loan_options', 'overtimes', 'otherpayments', 'saturationdeductions', 'loans', 'deduction_options', 'allowances', 'salary_breakup', 'employeesId', 'salary_calculations'));
         }
     }
 
@@ -393,24 +395,42 @@ class SetSalaryController extends Controller
                 return redirect()->back()->with('error', $messages->first());
             }
 
-            //$salaryb = SalaryBreakup::where('component_value_type', $request->component_value_type)->get();
-            // print_r($request->all());
-            // exit;
-            // if(count($salaryb) > 0 && $request->component_value_type == "Base Salary"){
-            //     return redirect()->back()->with('error', __('You have already added base salary field. You can add Base Salary Field only one time.'));
-            // }else{
-            //     $salery_breakup = new SalaryBreakup();
-            //     $salery_breakup->component_name = $request->component_name;
-            //     $salery_breakup->component_value_type = $request->component_value_type;
-            //     $salery_breakup->created_by = \Auth::user()->creatorId();
-            //     $salery_breakup->component_type = $request->component_type;
-            //     $salery_breakup->save();
+            if(count($request->all()) > 0){
+                foreach($request->all() as $field_name => $field_value){
+                    if($field_name !== '_token' && $field_name !== 'employee_id'){
+                        $field_data = explode("-", $field_name);
+                        $field_id = $field_data[1];
+                        $salary_breakup = SalaryBreakup::where('id', $field_id)->get();
+                        
+                        $sal_cal = SalaryCalculations::where(['employee_id' => $request->employee_id,'meta_key' => $field_data[0]])->get();
 
-                //return redirect()->back()->with('success', __('Salary Breakup successfully created.'));
-           // }
+                        if(count($sal_cal) > 0){
+                            $salary_calc = SalaryCalculations::find($sal_cal[0]->id);
+                            $salary_calc->meta_key = $field_data[0];
+                            $salary_calc->meta_value = $field_value;                            
+                            $salary_calc->field_id = $field_id;
+                            $salary_calc->field_type = $salary_breakup[0]->component_value_type;
+                            $salary_calc->employee_id = $request->employee_id;
+                            $salary_calc->update(); 
+                        }else{
+                            $salary_calc = new SalaryCalculations();
+                            $salary_calc->meta_key = $field_data[0];
+                            $salary_calc->meta_value = $field_value;
+                            $salary_calc->created_by = \Auth::user()->creatorId();
+                            $salary_calc->field_id = $field_id;
+                            $salary_calc->field_type = $salary_breakup[0]->component_value_type;
+                            $salary_calc->employee_id = $request->employee_id;
+                            $salary_calc->save(); 
+                        }
+                    }  
+                }
+                return redirect()->back()->with('success', __('Salary details successfully updated.'));
+            }else{
+                return redirect()->back()->with('error', __('Please fill out required values.'));
+            }
             
         } else {
-            //return redirect()->back()->with('error', __('Permission denied.'));
+            return redirect()->back()->with('error', __('Permission denied.'));
         }
     }
 }

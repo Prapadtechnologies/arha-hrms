@@ -25,12 +25,12 @@
                                 <th>{{ __('Name') }}</th>
                                 <th>{{ __('Payroll Type') }}</th>
                                 <th>{{ __('Salary') }}</th>
-                                <th>{{ __('Net Salary') }}</th>
                                 <th width="200px">{{ __('Action') }}</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($employees as $employee)
+                           <?php foreach ($employees as $employee){ $base_salary = CustomHelper::getBaseSalaryData($employee->id); ?>
+                                
                                 <tr>
                                     <td>
                                         <a href="{{ route('setsalary.show', \Illuminate\Support\Facades\Crypt::encrypt($employee->id)) }}"
@@ -40,9 +40,7 @@
                                     </td>
                                     <td>{{ $employee->name }}</td>
                                     <td>{{ !empty($employee->salary_type()) ? $employee->salary_type() : '-' }}</td>
-                                    <td>{{ \Auth::user()->priceFormat($employee->salary) }}</td>
-                                    <td>{{ !empty($employee->get_net_salary()) ? \Auth::user()->priceFormat($employee->get_net_salary()) : '-' }}
-                                    </td>
+                                    <td>{{ !empty($base_salary) ? CustomHelper::currencyFormat($base_salary)." INR" : '' }}</td>
                                     <td class="Action">
                                         <span>
                                             <div class="action-btn bg-warning ms-2">
@@ -55,7 +53,7 @@
                                         </span>
                                     </td>
                                 </tr>
-                            @endforeach
+                            <?php } ?>
                         </tbody>
                     </table>
                 </div>

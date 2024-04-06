@@ -224,6 +224,7 @@ return [
         'Utility' => App\Models\Utility::class,
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
         'Chatify' => Chatify\Facades\ChatifyMessenger::class,
+        'CustomHelper' => App\Helpers\CustomHelper::class,
     ])->toArray(),
 
 ];
